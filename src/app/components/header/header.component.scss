@@ -1,0 +1,24 @@
+.headerWrapper {
+  display: flex;
+  justify-content: center;
+
+  height: 111px;
+  width: 100%;
+
+  background-color: var(--primary-transparent);
+
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 90%;
+
+    border: 1px solid black;
+  }
+}
+
+.headerWrapper__container__img {
+  width: 4%;
+  height: fit-content;
+}
