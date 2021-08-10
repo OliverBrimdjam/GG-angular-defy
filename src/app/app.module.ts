@@ -10,6 +10,8 @@ import { UpperBannerComponent } from './components/upper-banner/upper-banner.com
 import { ContentComponent } from './components/content/content.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { ConsumerUnitComponent } from './components/consumer-unit/consumer-unit.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ConsumerUnitComponent } from './components/consumer-unit/consumer-unit.
     ConsumerUnitComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

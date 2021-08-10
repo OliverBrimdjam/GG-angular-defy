@@ -1,0 +1,61 @@
+{
+  "unidadeConsumidora": [
+    {
+      "id": 0,
+      "endereco": "Quadra 205, RJ",
+      "distribuidora": "Light",
+      "nome": "Unidade 1",
+      "numero": "132131312",
+      "faturas": [
+        {
+          "data_de_vencimento": "12/11/1998",
+          "consumo": 112,
+          "valor": 550,
+          "unidadeConsumidoraId": 1
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "endereco": "Quadra 315, RJ",
+      "distribuidora": "Light",
+      "nome": "casa de coito",
+      "numero": "132",
+      "faturas": [
+        {
+          "data_de_vencimento": "12/11/1998",
+          "consumo": 3312,
+          "valor": 350,
+          "unidadeConsumidoraId": 1
+        },
+        {
+          "data_de_vencimento": "12/11/1998",
+          "consumo": 12,
+          "valor": 250,
+          "unidadeConsumidoraId": 1
+        }
+      ]
+    },
+    {
+      "endereco": "fadsfaf",
+      "distribuidora": "asdfasdf",
+      "nome": "dfasdf",
+      "numero": "asdfsa",
+      "id": 2
+    },
+    {
+      "endereco": "beco do mijo",
+      "distribuidora": "cosern",
+      "nome": "pradaria do funk",
+      "numero": "999999",
+      "id": 3
+    },
+    {
+      "endereco": "gararasi, bairro da luz",
+      "distribuidora": "gurujara",
+      "nome": "japonês bayblaide",
+      "numero": "00989",
+      "id": 4
+    }
+  ]
+}

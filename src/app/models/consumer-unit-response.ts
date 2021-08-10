@@ -1,4 +1,5 @@
 export interface ConsumerUnitResponse {
+  id: number;
   endereco: string;
   distribuidora: string;
   nome: string;
