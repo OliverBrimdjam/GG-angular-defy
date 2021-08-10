@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentComponent implements OnInit {
 
-  consumerUnitsList: ConsumerUnit[] = [];
+  consumerUnitsList: ConsumerUnitResponse[] = [];
   consumerUnit: ConsumerUnit = {
     endereco: '',
     distribuidora: '',
@@ -45,7 +45,7 @@ export class ContentComponent implements OnInit {
       (data: ConsumerUnitResponse) => {
         this.consumerUnitResponse = data;
         this.getConsumerUnitList();
-        alert("adicionado com sucesso, ID da Unidade Consumidora: " + this.consumerUnitResponse.id);
+        alert("adicionado com sucesso, ID da Unidade: " + this.consumerUnitResponse.id);
       }).catch((err) => console.log(err));
   }
 }
