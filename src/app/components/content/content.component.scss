@@ -1,3 +1,25 @@
+.contentWrapper__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 2em;
+
+  h1 {
+    display: flex;
+    align-items: flex-end;
+
+    margin: 0;
+  }
+}
+
+.contentWrapper__header__options {
+  button {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+}
+
 .setComponent {
   display: flex;
   flex-direction: column;

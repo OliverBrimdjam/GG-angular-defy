@@ -1,13 +1,23 @@
 <div class="contentWrapper">
-  <h1>Unidades Consumidoras</h1>
+  <div class="contentWrapper__header">
+    <h1>Unidades Consumidoras</h1>
+    <div class="contentWrapper__header__options">
+      <button class="contentWrapper__header__options__button--add">+</button>
+      <button class="contentWrapper__header__options__button--more">...</button>
+    </div>
+  </div>
+
   <hr />
+
   <div *ngFor="let gottenConsumerUnit of consumerUnitsList">
-    {{gottenConsumerUnit.nome}} <br />
-    {{gottenConsumerUnit.endereco}} <br />
-    {{gottenConsumerUnit.numero}} <br />
-    {{gottenConsumerUnit.distribuidora}} <br />
+    Nome:{{gottenConsumerUnit.nome}} <br />
+    ID da unidade: {{gottenConsumerUnit.id}} <br />
+    Endereço: {{gottenConsumerUnit.endereco}} <br />
+    Numero: {{gottenConsumerUnit.numero}} <br />
+    Distribuidora: {{gottenConsumerUnit.distribuidora}} <br />
     -------------------------------------------
   </div>
+
   <div class="setComponent">
     <label for="nome">Nome:</label>
     <input type="text" name="nome" [(ngModel)]="consumerUnit.nome" />
