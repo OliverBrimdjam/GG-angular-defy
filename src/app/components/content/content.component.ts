@@ -45,6 +45,7 @@ export class ContentComponent implements OnInit {
       (data: ConsumerUnitResponse) => {
         this.consumerUnitResponse = data;
         this.getConsumerUnitList();
+        alert("adicionado com sucesso, ID da Unidade Consumidora: " + this.consumerUnitResponse.id);
       }).catch((err) => console.log(err));
   }
 }

@@ -6,14 +6,18 @@
     {{gottenConsumerUnit.endereco}} <br />
     {{gottenConsumerUnit.numero}} <br />
     {{gottenConsumerUnit.distribuidora}} <br />
+    -------------------------------------------
   </div>
-  <label for="nome">Nome:</label>
-  <input type="text" name="nome" [(ngModel)]="consumerUnit.nome" />
-  <label for="endereço">Endereço:</label>
-  <input type="text" name="endereço" [(ngModel)]="consumerUnit.endereco" />
-  <label for="numero">Núimero:</label>
-  <input type="text" name="numero" [(ngModel)]="consumerUnit.numero" />
-  <label for="distribuidora">Distribuidora</label>
-  <input type="text" name="distribuidora" [(ngModel)]="consumerUnit.distribuidora" />
-  <button (click)="postConsumerUnitList()">save</button>
+  <div class="setComponent">
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" [(ngModel)]="consumerUnit.nome" />
+    <label for="endereço">Endereço:</label>
+    <input type="text" name="endereço" [(ngModel)]="consumerUnit.endereco" />
+    <label for="numero">Núimero:</label>
+    <input type="text" name="numero" [(ngModel)]="consumerUnit.numero" />
+    <label for="distribuidora">Distribuidora</label>
+    <input type="text" name="distribuidora" [(ngModel)]="consumerUnit.distribuidora" />
+    <button (click)="postConsumerUnitList()">save</button>
+  </div>
+
 </div>

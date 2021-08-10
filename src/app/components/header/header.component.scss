@@ -1,6 +1,7 @@
 .headerWrapper {
   display: flex;
   justify-content: center;
+  position: absolute;
 
   height: 111px;
   width: 100%;
@@ -12,6 +13,7 @@
     flex-direction: row;
     justify-content: space-between;
 
+
     width: 90%;
 
     border: 1px solid black;
@@ -21,4 +23,17 @@
 .headerWrapper__container__img {
   width: 4%;
   height: fit-content;
+}
+
+.headerWrapper__container__nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  width: 60%;
+
+  a {
+    margin-right: 1%;
+    margin-left: 1%;
+  }
 }

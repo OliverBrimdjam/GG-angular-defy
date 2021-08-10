@@ -1,0 +1,16 @@
+.upperBannerWrapper {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 500px;
+  top: -111px;
+
+  background-color: lightgray;
+  border-radius: 0 0 0 100px;
+}
+
+.upperBannerWrapper__banner--spacer {
+  height: 111px;
+}
+
