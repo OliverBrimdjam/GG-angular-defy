@@ -4,16 +4,8 @@
       "id": 0,
       "endereco": "Quadra 205, RJ",
       "distribuidora": "Light",
-      "nome": "Unidade 1",
-      "numero": "132131312",
-      "faturas": [
-        {
-          "data_de_vencimento": "12/11/1998",
-          "consumo": 112,
-          "valor": 550,
-          "unidadeConsumidoraId": 1
-        }
-      ]
+      "nome": "Unidade Residencial 1",
+      "numero": "4545"
     },
     {
       "id": 1,
@@ -37,13 +29,6 @@
       ]
     },
     {
-      "endereco": "fadsfaf",
-      "distribuidora": "asdfasdf",
-      "nome": "dfasdf",
-      "numero": "asdfsa",
-      "id": 2
-    },
-    {
       "endereco": "beco do mijo",
       "distribuidora": "cosern",
       "nome": "pradaria do funk",
@@ -51,18 +36,18 @@
       "id": 3
     },
     {
-      "endereco": "gararasi, bairro da luz",
-      "distribuidora": "gurujara",
-      "nome": "japonês bayblaide",
-      "numero": "00989",
-      "id": 4
-    },
-    {
       "endereco": "rua da conserva, bairro holanda kun",
       "distribuidora": "power bahia",
       "nome": "studio baguncinha",
       "numero": "522",
       "id": 5
+    },
+    {
+      "endereco": "Estrada de barro, depois do atoleiro santana",
+      "distribuidora": "Light",
+      "nome": "Granja sururu",
+      "numero": "s/n",
+      "id": 6
     }
   ]
 }

@@ -1,0 +1,7 @@
+to-do list
+[ ] - abstrair url do service para variável;
+[ ] - funcionar CRUD com API mock;
+[ ] - mudar fonte e estilo do navBar;
+[ ] - posicionar navBar e logo;
+[ ] - preencher upper-banner;
+[ ] - consertar comandos que tem 0 a esquerda do id

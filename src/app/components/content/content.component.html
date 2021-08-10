@@ -3,22 +3,16 @@
     <h1>Unidades Consumidoras</h1>
     <div class="contentWrapper__header__options">
       <button class="contentWrapper__header__options__button--add">+</button>
+      <button class="contentWrapper__header__options__button--list" (click)="getConsumerUnitList()">
+        List
+      </button>
       <button class="contentWrapper__header__options__button--more">...</button>
     </div>
   </div>
 
   <hr />
 
-  <div *ngFor="let gottenConsumerUnit of consumerUnitsList">
-    Nome:{{gottenConsumerUnit.nome}} <br />
-    ID da unidade: {{gottenConsumerUnit.id}} <br />
-    Endereço: {{gottenConsumerUnit.endereco}} <br />
-    Numero: {{gottenConsumerUnit.numero}} <br />
-    Distribuidora: {{gottenConsumerUnit.distribuidora}} <br />
-    -------------------------------------------
-  </div>
-
-  <div class="setComponent">
+  <div class="contentWrapper__container--save">
     <label for="nome">Nome:</label>
     <input type="text" name="nome" [(ngModel)]="consumerUnit.nome" />
     <label for="endereço">Endereço:</label>
@@ -29,5 +23,32 @@
     <input type="text" name="distribuidora" [(ngModel)]="consumerUnit.distribuidora" />
     <button (click)="postConsumerUnitList()">save</button>
   </div>
+
+  <div class="contentWrapper__container--comand">
+    <label for="nome">ID da unidade:</label>
+    <input type="text" name="nome" [(ngModel)]="consumerUnitCmd.id" />
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" [(ngModel)]="consumerUnitCmd.nome" />
+    <label for="endereço">Endereço:</label>
+    <input type="text" name="endereço" [(ngModel)]="consumerUnitCmd.endereco" />
+    <label for="numero">Núimero:</label>
+    <input type="text" name="numero" [(ngModel)]="consumerUnitCmd.numero" />
+    <label for="distribuidora">Distribuidora</label>
+    <input type="text" name="distribuidora" [(ngModel)]="consumerUnitCmd.distribuidora" />
+    <button (click)="getConsumerUnit()">consultar</button>
+    <button (click)="putConsumerUnit()">atualizar</button>
+    <button (click)="delConsumerUnit()">deletar</button>
+  </div>
+
+  <div *ngFor="let gottenConsumerUnit of consumerUnitsList">
+    Nome: {{gottenConsumerUnit.nome}} <br />
+    ID da unidade: {{gottenConsumerUnit.id}} <br />
+    Endereço: {{gottenConsumerUnit.endereco}} <br />
+    Numero: {{gottenConsumerUnit.numero}} <br />
+    Distribuidora: {{gottenConsumerUnit.distribuidora}} <br />
+    -------------------------------------------
+  </div>
+
+
 
 </div>
