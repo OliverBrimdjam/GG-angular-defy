@@ -1,11 +1,37 @@
-<div class="wrapper">
-  <div class="consumerUnit" *ngFor="let gottenList of data">
-    <div class="consumerUnit__line--start">
-      <label>{{gottenList.label}}</label>
-    </div>
-    <div class="consumerUnit__line--end">
-      <label>{{gottenList.value}}</label>
+<div class="component">
+  <div class="wrapper">
+    <div class="wrapper__consumerUnit" *ngFor="let gottenList of data">
+      <div class="wrapper__consumerUnit__container" *ngIf="gottenList.label != 'faturas'; else specialDisplay">
+        <div class="wrapper__consumerUnit__container__line--start">
+          <label>{{gottenList.label}}</label>
+        </div>
+        <div class="wrapper__consumerUnit__container__line--end">
+          <label>{{gottenList.value}}</label>
+        </div>
+      </div>
+      <ng-template #specialDisplay>
+        <div class="wrapper__consumerUnit__containerInvoice" *ngIf="invoiceDisplay; else invoiceNoDisplay">
+          <div class="wrapper__consumerUnit__containerInvoice__line--start">
+            <label>faturas</label>
+          </div>
+          <div class="invoice">
+            <div class="wrapper__consumerUnit__containerInvoice__line--end" *ngFor="let invoice of gottenList.value">
+              <label>
+                <pre>
+                  Fatura:
+                     data de vencimento: {{invoice.data_de_vencimento}}
+                                consumo: {{invoice.consumo}}
+                                  valor: {{invoice.valor}}
+                    Unidade Consumidora: {{invoice.unidadeConsumidoraId}}
+                </pre>
+              </label>
+            </div>
+          </div>
+        </div>
+        <ng-template #invoiceNoDisplay></ng-template>
+      </ng-template>
     </div>
   </div>
+
+  <button (click)="switchInvoiceDisplay()">Ver Faturas</button>
 </div>
-<!-- *ngFor="let gottenList of consumerUnitsList" -->

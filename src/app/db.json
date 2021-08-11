@@ -1,25 +1,53 @@
 {
   "unidadeConsumidora": [
     {
+      "id": 3,
       "endereco": "beco do mijo",
       "distribuidora": "cosern",
       "nome": "pradaria do funk",
-      "numero": "999999",
-      "id": 3
+      "numero": "999999"
     },
     {
+      "id": 5,
       "endereco": "rua da conserva, bairro holanda kun",
       "distribuidora": "power bahia",
       "nome": "studio baguncinha",
-      "numero": "522",
-      "id": 5
+      "numero": "522"
     },
     {
+      "id": 6,
       "endereco": "Estrada de barro, depois do atoleiro santana",
       "distribuidora": "Light",
       "nome": "Granja sururu",
-      "numero": "s/n",
-      "id": 6
+      "numero": "s/n"
+    },
+    {
+      "id": 0,
+      "endereco": "",
+      "distribuidora": "",
+      "nome": "quadrangular 2",
+      "numero": ""
+    },
+    {
+      "id": 1,
+      "endereco": "Quadra 605, RS",
+      "distribuidora": "Light",
+      "nome": "Unidade 10",
+      "numero": "1312",
+      "faturas": [
+        {
+          "data_de_vencimento": "12/11/1998",
+          "consumo": 112,
+          "valor": 550,
+          "unidadeConsumidoraId": 1
+        },
+        {
+          "data_de_vencimento": "12/11/1998",
+          "consumo": 112,
+          "valor": 550,
+          "unidadeConsumidoraId": 1
+        }
+      ]
     }
   ]
 }

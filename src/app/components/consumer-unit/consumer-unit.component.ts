@@ -8,10 +8,6 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ConsumerUnitComponent implements OnInit {
 
-  data: any = [];
-  // chaves: any = [];
-  // valores: any = [];
-
   @Input()
   consumerUnit: ConsumerUnitResponse = {
     id: 0,
@@ -21,10 +17,12 @@ export class ConsumerUnitComponent implements OnInit {
     numero: '',
   };
 
+  data: any = [];
+  invoiceDisplay: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
-
     const chaves = Object.keys(this.consumerUnit);
     const valores = Object.values(this.consumerUnit);
 
@@ -33,8 +31,13 @@ export class ConsumerUnitComponent implements OnInit {
       dataObject.label = chaves[i];
       dataObject.value = valores[i];
 
+
       this.data.push(dataObject);
     }
+  }
+
+  switchInvoiceDisplay() {
+    this.invoiceDisplay ? this.invoiceDisplay = false : this.invoiceDisplay = true;
   }
 
 }
