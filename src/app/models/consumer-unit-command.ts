@@ -1,4 +1,4 @@
-export interface ConsumerUnitComand {
+export interface ConsumerUnitCommand {
   id: number;
   endereco: string;
   distribuidora: string;

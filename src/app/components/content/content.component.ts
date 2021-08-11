@@ -1,8 +1,9 @@
-import { ConsumerUnitComand } from './../../models/consumer-unit-comand';
+import { ConsumerUnitCommand } from '../../models/consumer-unit-command';
 import { ConsumerUnitResponse } from './../../models/consumer-unit-response';
 import { ConsumerUnitService } from './../../service/consumer-unit.service';
 import { ConsumerUnit } from './../../models/consumer-unit';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-content',
@@ -11,6 +12,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentComponent implements OnInit {
 
+  @Output()
+  onSend = new EventEmitter<any>();
+
+
+  commandDisplay: boolean = false;
+  listDisplay: boolean = true;
+  addDisplay: boolean = false;
   consumerUnitsList: ConsumerUnitResponse[] = [];
   consumerUnit: ConsumerUnit = {
     endereco: '',
@@ -25,7 +33,7 @@ export class ContentComponent implements OnInit {
     nome: '',
     numero: '',
   };
-  consumerUnitCmd: ConsumerUnitComand = {
+  consumerUnitCmd: ConsumerUnitCommand = {
     id: 0,
     endereco: '',
     distribuidora: '',
@@ -35,11 +43,40 @@ export class ContentComponent implements OnInit {
 
 
 
+
   constructor(private service: ConsumerUnitService) { }
 
   ngOnInit(): void {
     this.getConsumerUnitList();
   }
+
+  sendData() {
+    this.onSend.emit(this.consumerUnitsList);
+  }
+
+  switchCommandDisplay() {
+    if (this.commandDisplay) {
+      this.commandDisplay = false;
+    } else {
+      this.commandDisplay = true;
+      this.addDisplay = false;
+    }
+  }
+
+  switchAddDisplay() {
+    if (this.addDisplay) {
+      this.addDisplay = false;
+    } else {
+      this.addDisplay = true;
+      this.commandDisplay = false;
+    }
+  }
+
+  switchListDisplay() {
+    this.listDisplay ? this.listDisplay = false : this.listDisplay = true;
+  }
+
+
 
   resetToSTD() {
     this.consumerUnit = {

@@ -1,3 +1,5 @@
+
+//--------------- reset css ------------------
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -42,9 +44,21 @@ table {
 	border-spacing: 0;
 }
 
+//-------------------------------------
+
 *{
   --primary-black: #222222;
-  --primary-white: #f2f2f2;
+  --primary-white: #ffffff;
+  --primary-gray: #dfdfdf;
   --primary-transparent: transparent;
+
+  --secondary-black: #181717;
+  --secondary-white: #f7f7f7;
+  --secondary-gray: #d7d7d7;
+
+  --terciary-black: #000000;
+  --terciary-white: #efefef;
+  --terciary-gray: #cfcfcf;
 }
+
 

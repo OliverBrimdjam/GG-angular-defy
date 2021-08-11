@@ -2,17 +2,17 @@
   <div class="contentWrapper__header">
     <h1>Unidades Consumidoras</h1>
     <div class="contentWrapper__header__options">
-      <button class="contentWrapper__header__options__button--add">+</button>
-      <button class="contentWrapper__header__options__button--list" (click)="getConsumerUnitList()">
+      <button class="contentWrapper__header__options__button--add" (click)="switchAddDisplay()">+</button>
+      <button class="contentWrapper__header__options__button--list" (click)="switchListDisplay()">
         List
       </button>
-      <button class="contentWrapper__header__options__button--more">...</button>
+      <button class="contentWrapper__header__options__button--more" (click)="switchCommandDisplay()">...</button>
     </div>
   </div>
 
   <hr />
 
-  <div class="contentWrapper__container--save">
+  <div class="contentWrapper__container--save" *ngIf="addDisplay; else addOff">
     <label for="nome">Nome:</label>
     <input type="text" name="nome" [(ngModel)]="consumerUnit.nome" />
     <label for="endereço">Endereço:</label>
@@ -23,8 +23,10 @@
     <input type="text" name="distribuidora" [(ngModel)]="consumerUnit.distribuidora" />
     <button (click)="postConsumerUnitList()">save</button>
   </div>
+  <ng-template #addOff></ng-template>
 
-  <div class="contentWrapper__container--comand">
+
+  <div class="contentWrapper__container--command" *ngIf="commandDisplay; else cmdOff">
     <label for="nome">ID da unidade:</label>
     <input type="text" name="nome" [(ngModel)]="consumerUnitCmd.id" />
     <label for="nome">Nome:</label>
@@ -39,16 +41,13 @@
     <button (click)="putConsumerUnit()">atualizar</button>
     <button (click)="delConsumerUnit()">deletar</button>
   </div>
+  <ng-template #cmdOff></ng-template>
 
-  <div *ngFor="let gottenConsumerUnit of consumerUnitsList">
-    Nome: {{gottenConsumerUnit.nome}} <br />
-    ID da unidade: {{gottenConsumerUnit.id}} <br />
-    Endereço: {{gottenConsumerUnit.endereco}} <br />
-    Numero: {{gottenConsumerUnit.numero}} <br />
-    Distribuidora: {{gottenConsumerUnit.distribuidora}} <br />
-    -------------------------------------------
+
+  <div class="contentWrapper__container--content" *ngIf="listDisplay; else listOff">
+    <div *ngFor="let gottenConsumerUnit of consumerUnitsList">
+      <app-consumer-unit [consumerUnit]="gottenConsumerUnit"></app-consumer-unit>
+    </div>
   </div>
-
-
-
+  <ng-template #listOff></ng-template>
 </div>

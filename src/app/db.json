@@ -1,34 +1,6 @@
 {
   "unidadeConsumidora": [
     {
-      "id": 0,
-      "endereco": "Quadra 205, RJ",
-      "distribuidora": "Light",
-      "nome": "Unidade Residencial 1",
-      "numero": "4545"
-    },
-    {
-      "id": 1,
-      "endereco": "Quadra 315, RJ",
-      "distribuidora": "Light",
-      "nome": "casa de coito",
-      "numero": "132",
-      "faturas": [
-        {
-          "data_de_vencimento": "12/11/1998",
-          "consumo": 3312,
-          "valor": 350,
-          "unidadeConsumidoraId": 1
-        },
-        {
-          "data_de_vencimento": "12/11/1998",
-          "consumo": 12,
-          "valor": 250,
-          "unidadeConsumidoraId": 1
-        }
-      ]
-    },
-    {
       "endereco": "beco do mijo",
       "distribuidora": "cosern",
       "nome": "pradaria do funk",

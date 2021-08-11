@@ -1,4 +1,4 @@
-import { ConsumerUnitComand } from './../models/consumer-unit-comand';
+import { ConsumerUnitCommand } from '../models/consumer-unit-command';
 import { ConsumerUnitResponse } from './../models/consumer-unit-response';
 import { ConsumerUnit } from './../models/consumer-unit';
 import { Injectable } from '@angular/core';
@@ -31,8 +31,8 @@ export class ConsumerUnitService {
     );
   }
 
-  updateConsumerUnit(consumerUnitCmd: ConsumerUnitComand) {
-    return this.httpClient.put<ConsumerUnitComand>(
+  updateConsumerUnit(consumerUnitCmd: ConsumerUnitCommand) {
+    return this.httpClient.put<ConsumerUnitCommand>(
       `http://localhost:3000/unidadeConsumidora/${consumerUnitCmd.id}`,
       consumerUnitCmd
     );

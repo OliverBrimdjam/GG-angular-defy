@@ -1,1 +1,11 @@
-<p>consumer-unit works!</p>
+<div class="wrapper">
+  <div class="consumerUnit" *ngFor="let gottenList of data">
+    <div class="consumerUnit__line--start">
+      <label>{{gottenList.label}}</label>
+    </div>
+    <div class="consumerUnit__line--end">
+      <label>{{gottenList.value}}</label>
+    </div>
+  </div>
+</div>
+<!-- *ngFor="let gottenList of consumerUnitsList" -->

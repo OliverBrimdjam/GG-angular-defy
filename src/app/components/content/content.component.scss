@@ -1,3 +1,7 @@
+.contentWrapper {
+  background-color: var(--secondary-white);
+}
+
 .contentWrapper__header {
   display: flex;
   justify-content: space-between;
@@ -20,7 +24,7 @@
   }
 }
 
-.contentWrapper__container--save, .contentWrapper__container--comand {
+.contentWrapper__container--save, .contentWrapper__container--command {
   display: flex;
   flex-direction: column;
 
