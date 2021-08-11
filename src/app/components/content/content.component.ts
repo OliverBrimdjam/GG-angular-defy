@@ -14,11 +14,13 @@ export class ContentComponent implements OnInit {
 
   @Output()
   onSend = new EventEmitter<any>();
+  onFind = new EventEmitter<any>();
 
-
+  foundConsumerUnitDisplay: boolean = false;
   commandDisplay: boolean = false;
   listDisplay: boolean = true;
   addDisplay: boolean = false;
+
   consumerUnitsList: ConsumerUnitResponse[] = [];
   consumerUnit: ConsumerUnit = {
     endereco: '',
@@ -40,6 +42,13 @@ export class ContentComponent implements OnInit {
     nome: '',
     numero: '',
   };
+  foundConsumerUnit: ConsumerUnitResponse = {
+    id: 0,
+    endereco: '',
+    distribuidora: '',
+    nome: '',
+    numero: '',
+  };
 
 
 
@@ -52,6 +61,10 @@ export class ContentComponent implements OnInit {
 
   sendData() {
     this.onSend.emit(this.consumerUnitsList);
+  }
+
+  findConsumerUnit() {
+    this.onFind.emit();
   }
 
   switchCommandDisplay() {
@@ -73,7 +86,16 @@ export class ContentComponent implements OnInit {
   }
 
   switchListDisplay() {
-    this.listDisplay ? this.listDisplay = false : this.listDisplay = true;
+    if (this.listDisplay) {
+      this.listDisplay = false;
+    } else {
+      this.listDisplay = true;
+      this.foundConsumerUnitDisplay = false;
+    }
+  }
+
+  switchFoundDisplay() {
+    this.foundConsumerUnitDisplay ? this.foundConsumerUnitDisplay = false : this.foundConsumerUnitDisplay = true;
   }
 
 
@@ -109,7 +131,10 @@ export class ContentComponent implements OnInit {
 
   getConsumerUnit() {
     this.service.getConsumerUnit(this.consumerUnitCmd.id).toPromise().then((data) => {
-      this.consumerUnitResponse = data;
+      this.foundConsumerUnit = data;
+      this.switchListDisplay();
+      this.switchFoundDisplay()
+      this.resetToSTD();
       //falta apagar consulta de lista e mostrar somente uma unidade
       //falta apagar os campos de consulta
     }).catch((err) => console.log(err));

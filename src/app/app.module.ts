@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     UpperBannerComponent,
     ContentComponent,
     InvoiceComponent,
-    ConsumerUnitComponent
+    ConsumerUnitComponent,
   ],
   imports: [
     BrowserModule,

@@ -25,7 +25,6 @@
   </div>
   <ng-template #addOff></ng-template>
 
-
   <div class="contentWrapper__container--command" *ngIf="commandDisplay; else cmdOff">
     <label for="nome">ID da unidade:</label>
     <input type="text" name="nome" [(ngModel)]="consumerUnitCmd.id" />
@@ -43,6 +42,11 @@
   </div>
   <ng-template #cmdOff></ng-template>
 
+  <div>
+    <app-consumer-unit [consumerUnit]="foundConsumerUnit" *ngIf="foundConsumerUnitDisplay; else noFound">
+    </app-consumer-unit>
+    <ng-template #noFound></ng-template>
+  </div>
 
   <div class="contentWrapper__container--content" *ngIf="listDisplay; else listOff">
     <div *ngFor="let gottenConsumerUnit of consumerUnitsList">

@@ -44,6 +44,7 @@
   margin: 0 0.2em 0 1em;
 
   label{
+    height: fit-content;
     padding: 0.2em 0.5em 0.2em 0.5em;
     border-radius: 10px;
 
@@ -61,6 +62,7 @@
   margin: 0 0.2em 0 1em;
 
   label{
+    height: fit-content;
     padding: 0.2em 0.5em 0.2em 0.5em;
     border-radius: 10px;
 
@@ -93,7 +95,7 @@
   display: flex;
   justify-content: flex-start;
 
-  width: 90%; //comportamento estranho diferente do elemento similar dos outros
+  width: 90%; // aqui - comportamento estranho diferente do elemento similar dos outros
   margin: 0 1em 0.3em 0.2em;
 
   label {

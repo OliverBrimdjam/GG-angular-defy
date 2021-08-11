@@ -4,4 +4,5 @@ export interface ConsumerUnitResponse {
   distribuidora: string;
   nome: string;
   numero: string;
+  faturas?: object;
 }

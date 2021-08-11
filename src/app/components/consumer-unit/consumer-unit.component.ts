@@ -31,13 +31,16 @@ export class ConsumerUnitComponent implements OnInit {
       dataObject.label = chaves[i];
       dataObject.value = valores[i];
 
-
       this.data.push(dataObject);
     }
   }
 
   switchInvoiceDisplay() {
-    this.invoiceDisplay ? this.invoiceDisplay = false : this.invoiceDisplay = true;
-  }
+    if (this.data[5] == undefined) {
+      alert("Não existem faturas associadas a esta Unidade Consumidora");
+    } else if (this.data[5].label == 'faturas') {
+      this.invoiceDisplay ? this.invoiceDisplay = false : this.invoiceDisplay = true;
+    }
+  };
 
 }
