@@ -1,9 +1,10 @@
 to-do list
 [ ] - abstrair url do service para variável;
 [x] - funcionar CRUD com API mock;
-[ ] - transferir CRUD para Observable ao inves de promises;
-[ ] - mudar fonte e estilo do navBar;
-[ ] - posicionar navBar e logo;
-[ ] - preencher upper-banner;
-[ ] - consertar comandos que tem 0 a esquerda do id
-[ ] - consertar largura do html para 100% da viewport
+[ ] - transferir CRUD para Observable ao invés de promises;
+[x] - mudar fonte e estilo do navBar;
+[x] - posicionar navBar e logo;
+[x] - preencher upper-banner;
+[x] - consertar largura do html para 100% da viewport
+[ ] - fazer validação de campos do command e add
+[x] - centralizar estilos no arquivo de estilos globais tal qual foi com h1

@@ -157,8 +157,6 @@ export class ContentComponent implements OnInit {
       this.switchFoundDisplay();
       this.switchCommandDisplay();
       this.resetToSTD();
-      //falta apagar consulta de lista e mostrar somente uma unidade
-      //falta apagar os campos de consulta
     }).catch((err) => console.log(err));
   }
 

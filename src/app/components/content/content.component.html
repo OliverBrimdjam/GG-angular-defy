@@ -1,20 +1,20 @@
-<div class="contentWrapper">
-  <div class="contentWrapper__header">
+<div class="wrapper">
+  <div class="wrapper__header">
     <h1>Unidades Consumidoras</h1>
-    <div class="contentWrapper__header__options">
-      <button class="contentWrapper__header__options__button--add" (click)="switchAddDisplay()">+</button>
-      <button class="contentWrapper__header__options__button--list" (click)="switchListDisplay()">
+    <div class="wrapper__header__options">
+      <button class="wrapper__header__options__button--add" (click)="switchAddDisplay()">+</button>
+      <button class="wrapper__header__options__button--list" (click)="switchListDisplay()">
         List
       </button>
-      <button class="contentWrapper__header__options__button--more"
+      <button class="wrapper__header__options__button--more"
         (click)="switchCommandDisplay()">&nbsp;&nbsp;&nbsp;</button>
     </div>
   </div>
 
   <hr />
 
-  <div class="contentWrapper__container--save" [@inOutAnimation] *ngIf="addDisplay; else addOff">
-    <div class="contentWrapper__container--save__wrapper--content">
+  <div class="wrapper__container--save" [@inOutAnimation] *ngIf="addDisplay; else addOff">
+    <div class="wrapper__container--save__wrapper--content">
       <label for="nome">Nome</label>
       <div><input type="text" name="nome" [(ngModel)]="consumerUnit.nome" /></div>
 
@@ -28,14 +28,14 @@
       <div><input type="text" name="distribuidora" [(ngModel)]="consumerUnit.distribuidora" /></div>
     </div>
 
-    <div class="contentWrapper__container--save__wrapper--buttons">
+    <div class="wrapper__container--save__wrapper--buttons">
       <button (click)="postConsumerUnitList()">save</button>
     </div>
   </div>
   <ng-template #addOff></ng-template>
 
-  <div class="contentWrapper__container--command" [@inOutAnimation] *ngIf="commandDisplay; else cmdOff">
-    <div class="contentWrapper__container--command__wrapper--content">
+  <div class="wrapper__container--command" [@inOutAnimation] *ngIf="commandDisplay; else cmdOff">
+    <div class="wrapper__container--command__wrapper--content">
 
       <label for="nome">ID da unidade</label>
       <div><input type="text" name="nome" [(ngModel)]="consumerUnitCmd.id" /></div>
@@ -53,7 +53,7 @@
       <div><input type="text" name="distribuidora" [(ngModel)]="consumerUnitCmd.distribuidora" /></div>
 
     </div>
-    <div class="contentWrapper__container--command__wrapper--buttons">
+    <div class="wrapper__container--command__wrapper--buttons">
       <button (click)="getConsumerUnit()">consultar</button>
       <button (click)="putConsumerUnit()">atualizar</button>
       <button (click)="delConsumerUnit()">deletar</button>
@@ -68,7 +68,7 @@
     <ng-template #noFound></ng-template>
   </div>
 
-  <div class="contentWrapper__container--content" *ngIf="listDisplay; else listOff">
+  <div class="wrapper__container--content" *ngIf="listDisplay; else listOff">
     <div *ngFor="let gottenConsumerUnit of consumerUnitsList">
       <app-consumer-unit [consumerUnit]="gottenConsumerUnit"></app-consumer-unit>
     </div>

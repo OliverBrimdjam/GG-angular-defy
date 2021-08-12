@@ -17,13 +17,13 @@
           <div class="invoice">
             <div class="wrapper__consumerUnit__containerInvoice__line--end" *ngFor="let invoice of gottenList.value">
               <label>
-                <pre>
-                  Fatura:
-                     data de vencimento: {{invoice.data_de_vencimento}}
-                                consumo: {{invoice.consumo}}
-                                  valor: {{invoice.valor}}
-                    Unidade Consumidora: {{invoice.unidadeConsumidoraId}}
-                </pre>
+                <p>
+                  Fatura:<br /><br />
+                  data de vencimento: {{invoice.data_de_vencimento}}<br />
+                  consumo: {{invoice.consumo}}<br />
+                  valor: {{invoice.valor}}<br />
+                  Unidade Consumidora: {{invoice.unidadeConsumidoraId}}<br />
+                </p>
               </label>
             </div>
           </div>
