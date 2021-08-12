@@ -6,44 +6,64 @@
       <button class="contentWrapper__header__options__button--list" (click)="switchListDisplay()">
         List
       </button>
-      <button class="contentWrapper__header__options__button--more" (click)="switchCommandDisplay()">...</button>
+      <button class="contentWrapper__header__options__button--more"
+        (click)="switchCommandDisplay()">&nbsp;&nbsp;&nbsp;</button>
     </div>
   </div>
 
   <hr />
 
-  <div class="contentWrapper__container--save" *ngIf="addDisplay; else addOff">
-    <label for="nome">Nome:</label>
-    <input type="text" name="nome" [(ngModel)]="consumerUnit.nome" />
-    <label for="endereço">Endereço:</label>
-    <input type="text" name="endereço" [(ngModel)]="consumerUnit.endereco" />
-    <label for="numero">Núimero:</label>
-    <input type="text" name="numero" [(ngModel)]="consumerUnit.numero" />
-    <label for="distribuidora">Distribuidora</label>
-    <input type="text" name="distribuidora" [(ngModel)]="consumerUnit.distribuidora" />
-    <button (click)="postConsumerUnitList()">save</button>
+  <div class="contentWrapper__container--save" [@inOutAnimation] *ngIf="addDisplay; else addOff">
+    <div class="contentWrapper__container--save__wrapper--content">
+      <label for="nome">Nome</label>
+      <div><input type="text" name="nome" [(ngModel)]="consumerUnit.nome" /></div>
+
+      <label for="endereço">Endereço</label>
+      <div><input type="text" name="endereço" [(ngModel)]="consumerUnit.endereco" /></div>
+
+      <label for="numero">Numero</label>
+      <div><input type="text" name="numero" [(ngModel)]="consumerUnit.numero" /></div>
+
+      <label for="distribuidora">Distribuidora</label>
+      <div><input type="text" name="distribuidora" [(ngModel)]="consumerUnit.distribuidora" /></div>
+    </div>
+
+    <div class="contentWrapper__container--save__wrapper--buttons">
+      <button (click)="postConsumerUnitList()">save</button>
+    </div>
   </div>
   <ng-template #addOff></ng-template>
 
-  <div class="contentWrapper__container--command" *ngIf="commandDisplay; else cmdOff">
-    <label for="nome">ID da unidade:</label>
-    <input type="text" name="nome" [(ngModel)]="consumerUnitCmd.id" />
-    <label for="nome">Nome:</label>
-    <input type="text" name="nome" [(ngModel)]="consumerUnitCmd.nome" />
-    <label for="endereço">Endereço:</label>
-    <input type="text" name="endereço" [(ngModel)]="consumerUnitCmd.endereco" />
-    <label for="numero">Núimero:</label>
-    <input type="text" name="numero" [(ngModel)]="consumerUnitCmd.numero" />
-    <label for="distribuidora">Distribuidora</label>
-    <input type="text" name="distribuidora" [(ngModel)]="consumerUnitCmd.distribuidora" />
-    <button (click)="getConsumerUnit()">consultar</button>
-    <button (click)="putConsumerUnit()">atualizar</button>
-    <button (click)="delConsumerUnit()">deletar</button>
+  <div class="contentWrapper__container--command" [@inOutAnimation] *ngIf="commandDisplay; else cmdOff">
+    <div class="contentWrapper__container--command__wrapper--content">
+
+      <label for="nome">ID da unidade</label>
+      <div><input type="text" name="nome" [(ngModel)]="consumerUnitCmd.id" /></div>
+
+      <label for="nome">Nome</label>
+      <div><input type="text" name="nome" [(ngModel)]="consumerUnitCmd.nome" /></div>
+
+      <label for="endereço">Endereço</label>
+      <div><input type="text" name="endereço" [(ngModel)]="consumerUnitCmd.endereco" /></div>
+
+      <label for="numero">Numero</label>
+      <div><input type="text" name="numero" [(ngModel)]="consumerUnitCmd.numero" /></div>
+
+      <label for="distribuidora">Distribuidora</label>
+      <div><input type="text" name="distribuidora" [(ngModel)]="consumerUnitCmd.distribuidora" /></div>
+
+    </div>
+    <div class="contentWrapper__container--command__wrapper--buttons">
+      <button (click)="getConsumerUnit()">consultar</button>
+      <button (click)="putConsumerUnit()">atualizar</button>
+      <button (click)="delConsumerUnit()">deletar</button>
+    </div>
   </div>
   <ng-template #cmdOff></ng-template>
 
   <div>
-    <app-consumer-unit [consumerUnit]="foundConsumerUnit" *ngIf="foundConsumerUnitDisplay; else noFound">
+    <app-consumer-unit [consumerUnit]="foundConsumerUnit" [@inOutAnimation]
+      *ngIf="foundConsumerUnitDisplay; else noFound">
     </app-consumer-unit>
     <ng-template #noFound></ng-template>
   </div>

@@ -1,9 +1,10 @@
 .headerWrapper {
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   position: absolute;
 
-  height: 111px;
+  height: 15%;
   width: 100%;
 
   background-color: var(--primary-transparent);
@@ -13,15 +14,12 @@
     flex-direction: row;
     justify-content: space-between;
 
-
     width: 90%;
-
-    border: 1px solid black;
   }
 }
 
 .headerWrapper__container__img {
-  width: 4%;
+  width: 3%;
   height: fit-content;
 }
 
@@ -29,11 +27,17 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
 
   width: 60%;
 
   a {
     margin-right: 1%;
     margin-left: 1%;
+
+    color: var(--primary-white);
+    font-family: var(--font-family);
+    outline: none;
+    text-decoration: none;
   }
 }

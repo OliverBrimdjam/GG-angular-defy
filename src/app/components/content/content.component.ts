@@ -4,17 +4,40 @@ import { ConsumerUnitService } from './../../service/consumer-unit.service';
 import { ConsumerUnit } from './../../models/consumer-unit';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ThisReceiver } from '@angular/compiler';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.scss']
+  styleUrls: ['./content.component.scss'],
+  animations: [
+    trigger(
+      'inOutAnimation',
+      [
+        transition(
+          ':enter',
+          [
+            style({ height: 0, opacity: 0 }),
+            animate('0.2s ease-out',
+              style({ height: 350, opacity: 1 }))
+          ]
+        ),
+        transition(
+          ':leave',
+          [
+            style({ height: 350, opacity: 1 }),
+            animate('0.2s ease-in',
+              style({ height: 0, opacity: 0 }))
+          ]
+        )
+      ]
+    )
+  ]
 })
 export class ContentComponent implements OnInit {
 
   @Output()
   onSend = new EventEmitter<any>();
-  onFind = new EventEmitter<any>();
 
   foundConsumerUnitDisplay: boolean = false;
   commandDisplay: boolean = false;
@@ -63,13 +86,10 @@ export class ContentComponent implements OnInit {
     this.onSend.emit(this.consumerUnitsList);
   }
 
-  findConsumerUnit() {
-    this.onFind.emit();
-  }
-
   switchCommandDisplay() {
     if (this.commandDisplay) {
       this.commandDisplay = false;
+      this.listDisplay = false;
     } else {
       this.commandDisplay = true;
       this.addDisplay = false;
@@ -79,6 +99,7 @@ export class ContentComponent implements OnInit {
   switchAddDisplay() {
     if (this.addDisplay) {
       this.addDisplay = false;
+      this.listDisplay = false;
     } else {
       this.addDisplay = true;
       this.commandDisplay = false;
@@ -86,12 +107,12 @@ export class ContentComponent implements OnInit {
   }
 
   switchListDisplay() {
-    if (this.listDisplay) {
-      this.listDisplay = false;
-    } else {
-      this.listDisplay = true;
-      this.foundConsumerUnitDisplay = false;
-    }
+
+    this.listDisplay = true;
+    this.foundConsumerUnitDisplay = false;
+    this.addDisplay = false;
+    this.commandDisplay = false;
+
   }
 
   switchFoundDisplay() {
@@ -132,8 +153,9 @@ export class ContentComponent implements OnInit {
   getConsumerUnit() {
     this.service.getConsumerUnit(this.consumerUnitCmd.id).toPromise().then((data) => {
       this.foundConsumerUnit = data;
-      this.switchListDisplay();
-      this.switchFoundDisplay()
+      this.listDisplay = false;
+      this.switchFoundDisplay();
+      this.switchCommandDisplay();
       this.resetToSTD();
       //falta apagar consulta de lista e mostrar somente uma unidade
       //falta apagar os campos de consulta

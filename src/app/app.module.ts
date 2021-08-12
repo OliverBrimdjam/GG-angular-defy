@@ -12,6 +12,7 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
 import { ConsumerUnitComponent } from './components/consumer-unit/consumer-unit.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -24,11 +25,13 @@ import { HttpClientModule } from '@angular/common/http';
     ContentComponent,
     InvoiceComponent,
     ConsumerUnitComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

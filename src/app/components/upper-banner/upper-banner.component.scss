@@ -1,16 +1,34 @@
-.upperBannerWrapper {
+.wrapper {
   display: flex;
   flex-direction: column;
 
   width: 100%;
-  height: 500px;
+  height: 400px;
   top: -111px;
 
-  background-color: lightgray;
-  border-radius: 0 0 0 100px;
+  background-color: var(--secondary-white);
+
 }
 
-.upperBannerWrapper__banner--spacer {
+.wrapper__container{
+  width: 100%;
+  height: 100%;
+  border-radius: 0 0 0 100px;
+
+  background: url(../../../assets/upperBanner-background.jpeg) no-repeat center;  ;
+}
+
+.wrapper__container__banner--spacer {
   height: 111px;
+}
+
+.wrapper__container__banner--logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 1em;
+
+  opacity: 1;
 }
 

@@ -11,6 +11,28 @@
 
   background-color: var(--primary-white);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+
+  button {
+    background-color: var(--button-secondary);
+    color: var(--primary-white);
+    border: none;
+    border-radius: 20px;
+    padding: 0.2em 0.7em 0.2em 0.7em;
+    margin: 0 1em 0 1em;
+    font-family: var(--font-family);
+    font-size: 1em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+  }
+
+  button:active {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    background-color: var(--button-terciary);
+  }
+
+  button:hover{
+    background-color: var(--button-primary);
+  }
 }
 
 .invoice {
@@ -68,7 +90,7 @@
 
     text-align: center;
     background-color: var(--primary-gray);
-    font-family: Helvetica, sans-serif;
+    font-family: var(--font-family);
   }
 }
 
@@ -87,7 +109,7 @@
     text-align: start;
     text-overflow: ellipsis;
     background-color: var(--terciary-white);
-    font-family: Helvetica, sans-serif;
+    font-family: var(--font-family);
   }
 }
 
