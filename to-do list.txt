@@ -1,10 +1,18 @@
 to-do list
-[ ] - abstrair url do service para variável;
+[x] - abstrair url do service para variável;
 [x] - funcionar CRUD com API mock;
 [ ] - transferir CRUD para Observable ao invés de promises;
 [x] - mudar fonte e estilo do navBar;
 [x] - posicionar navBar e logo;
 [x] - preencher upper-banner;
 [x] - consertar largura do html para 100% da viewport
-[ ] - fazer validação de campos do command e add
+[x] - fazer validação de campos do command e add
 [x] - centralizar estilos no arquivo de estilos globais tal qual foi com h1
+[ ] - revisar idiomas da UI para um só
+[ ] - corrigir tags do consumerUnit.component quanto ao português
+[ ] - fazer a parte de faturas funcionar
+[ ] - implementar testes automatizados
+[ ] - aprimorar busca por outros campos
+[ ] - adicionar botão de cancelamento
+[ ] - criar solução para campos do delete e consult
+[ ] - desmockar aplicação

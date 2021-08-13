@@ -9,10 +9,10 @@
     },
     {
       "id": 5,
-      "endereco": "rua da conserva, bairro holanda kun",
-      "distribuidora": "power bahia",
-      "nome": "studio baguncinha",
-      "numero": "522"
+      "endereco": "ponta negra no meio da rua",
+      "distribuidora": "gatonet",
+      "nome": "tapiocaria",
+      "numero": "000"
     },
     {
       "id": 6,
@@ -20,13 +20,6 @@
       "distribuidora": "Light",
       "nome": "Granja sururu",
       "numero": "s/n"
-    },
-    {
-      "id": 0,
-      "endereco": "",
-      "distribuidora": "",
-      "nome": "quadrangular 2",
-      "numero": ""
     },
     {
       "id": 1,
@@ -48,6 +41,27 @@
           "unidadeConsumidoraId": 1
         }
       ]
+    },
+    {
+      "endereco": "rua da perdição total",
+      "distribuidora": "power dark",
+      "nome": "9",
+      "numero": "999",
+      "id": 7
+    },
+    {
+      "endereco": "beira do mar",
+      "distribuidora": "cosern",
+      "nome": "casa de praia ",
+      "numero": "s/n",
+      "id": 8
+    },
+    {
+      "id": 9,
+      "endereco": "aaa",
+      "distribuidora": "fsa",
+      "nome": "fd",
+      "numero": "eeee"
     }
   ]
 }

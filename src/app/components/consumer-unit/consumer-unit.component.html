@@ -12,16 +12,16 @@
       <ng-template #specialDisplay>
         <div class="wrapper__consumerUnit__containerInvoice" *ngIf="invoiceDisplay; else invoiceNoDisplay">
           <div class="wrapper__consumerUnit__containerInvoice__line--start">
-            <label>faturas</label>
+            <label>Faturas</label>
           </div>
           <div class="invoice">
             <div class="wrapper__consumerUnit__containerInvoice__line--end" *ngFor="let invoice of gottenList.value">
               <label>
                 <p>
                   Fatura:<br /><br />
-                  data de vencimento: {{invoice.data_de_vencimento}}<br />
-                  consumo: {{invoice.consumo}}<br />
-                  valor: {{invoice.valor}}<br />
+                  Data de vencimento: {{invoice.data_de_vencimento}}<br />
+                  Consumo: {{invoice.consumo}}<br />
+                  Valor: {{invoice.valor}}<br />
                   Unidade Consumidora: {{invoice.unidadeConsumidoraId}}<br />
                 </p>
               </label>

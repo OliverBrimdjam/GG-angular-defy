@@ -87,38 +87,32 @@ export class ContentComponent implements OnInit {
   }
 
   switchCommandDisplay() {
-    if (this.commandDisplay) {
-      this.commandDisplay = false;
-      this.listDisplay = false;
-    } else {
-      this.commandDisplay = true;
-      this.addDisplay = false;
-    }
+    this.addDisplay = false;
+    this.commandDisplay = true;
+    this.listDisplay = false;
+    this.foundConsumerUnitDisplay = false;
   }
 
   switchAddDisplay() {
-    if (this.addDisplay) {
-      this.addDisplay = false;
-      this.listDisplay = false;
-    } else {
-      this.addDisplay = true;
-      this.commandDisplay = false;
-    }
+    this.addDisplay = true;
+    this.commandDisplay = false;
+    this.listDisplay = false;
+    this.foundConsumerUnitDisplay = false;
   }
 
   switchListDisplay() {
-
-    this.listDisplay = true;
-    this.foundConsumerUnitDisplay = false;
     this.addDisplay = false;
     this.commandDisplay = false;
-
+    this.listDisplay = true;
+    this.foundConsumerUnitDisplay = false;
   }
 
   switchFoundDisplay() {
-    this.foundConsumerUnitDisplay ? this.foundConsumerUnitDisplay = false : this.foundConsumerUnitDisplay = true;
+    this.addDisplay = false;
+    this.commandDisplay = false;
+    this.listDisplay = false;
+    this.foundConsumerUnitDisplay = true;
   }
-
 
 
   resetToSTD() {
@@ -147,17 +141,22 @@ export class ContentComponent implements OnInit {
   getConsumerUnitList() {
     this.service.getConsumerUnits().toPromise().then(data => {
       this.consumerUnitsList = data;
-    }).catch((err) => console.log(err));
+      this.switchListDisplay();
+    }).catch((err) => alert('Lista não encontrada: erro status ' + err.status));
   }
 
   getConsumerUnit() {
+    if (!this.consumerUnitCmd.id && this.consumerUnitCmd.id !== 0) {
+      alert("O campo ID é obrigatório para essa busca");
+      return;
+    }
+
     this.service.getConsumerUnit(this.consumerUnitCmd.id).toPromise().then((data) => {
       this.foundConsumerUnit = data;
       this.listDisplay = false;
       this.switchFoundDisplay();
-      this.switchCommandDisplay();
       this.resetToSTD();
-    }).catch((err) => console.log(err));
+    }).catch((err) => alert('Unidade não encontrada: erro status ' + err.status));
   }
 
   postConsumerUnitList() {
@@ -167,10 +166,15 @@ export class ContentComponent implements OnInit {
         this.getConsumerUnitList();
         alert("Adicionado com sucesso. ID da Unidade: " + this.consumerUnitResponse.id);
         this.resetToSTD();
-      }).catch((err) => console.log(err));
+      }).catch((err) => alert('Unidade não cadastrada: erro status ' + err.status));
   }
 
   putConsumerUnit() {
+    if (!this.consumerUnitCmd.id && this.consumerUnitCmd.id !== 0) {
+      alert("O campo ID é obrigatório para essa busca");
+      return;
+    }
+
     this.service.updateConsumerUnit(this.consumerUnitCmd).toPromise().then(
       (data: ConsumerUnitResponse) => {
         this.consumerUnitResponse = data;
@@ -181,6 +185,11 @@ export class ContentComponent implements OnInit {
   }
 
   delConsumerUnit() {
+    if (!this.consumerUnitCmd.id && this.consumerUnitCmd.id !== 0) {
+      alert("O campo ID é obrigatório para essa busca");
+      return;
+    }
+
     this.service.deleteConsumerUnit(this.consumerUnitCmd.id).toPromise().then(() => {
       alert("Unidade deletada. ID da unidade: " + this.consumerUnitCmd.id);
       this.getConsumerUnitList();

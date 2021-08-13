@@ -9,38 +9,41 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ConsumerUnitService {
 
+  baseUrl: string = 'http://localhost:3000/unidadeConsumidora';
+
   constructor(private httpClient: HttpClient) { }
 
   getConsumerUnits() {
     return this.httpClient.get<any>(
-      'http://localhost:3000/unidadeConsumidora'
+      this.baseUrl
     );
   }
 
   getConsumerUnit(id: number) {
     return this.httpClient.get<any>(
-      `http://localhost:3000/unidadeConsumidora/${id}`,
+      // `http://localhost:3000/unidadeConsumidora/${id}`,
+      this.baseUrl + '/' + id
 
     );
   }
 
   setConsumerUnit(consumerUnit: ConsumerUnit) {
     return this.httpClient.post<ConsumerUnitResponse>(
-      "http://localhost:3000/unidadeConsumidora",
+      this.baseUrl,
       consumerUnit
     );
   }
 
   updateConsumerUnit(consumerUnitCmd: ConsumerUnitCommand) {
     return this.httpClient.put<ConsumerUnitCommand>(
-      `http://localhost:3000/unidadeConsumidora/${consumerUnitCmd.id}`,
+      this.baseUrl + '/' + consumerUnitCmd.id,
       consumerUnitCmd
     );
   }
 
   deleteConsumerUnit(id: number) {
     return this.httpClient.delete<any>(
-      `http://localhost:3000/unidadeConsumidora/${id}`
+      this.baseUrl + '/' + id
     );
   }
 }
