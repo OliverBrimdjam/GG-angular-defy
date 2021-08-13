@@ -9,7 +9,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ConsumerUnitService {
 
-  baseUrl: string = 'http://localhost:3000/unidadeConsumidora';
+  // baseUrl: string = 'http://localhost:3000/unidadeConsumidora';
+  baseUrl: string = 'https://api.dev.grupogera.com/processo-seletivo';
+
 
   constructor(private httpClient: HttpClient) { }
 
