@@ -12,7 +12,8 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
 import { ConsumerUnitComponent } from './components/consumer-unit/consumer-unit.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InvoiceUnitComponent } from './components/invoice-unit/invoice-unit.component'
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     ContentComponent,
     InvoiceComponent,
     ConsumerUnitComponent,
+    InvoiceUnitComponent,
 
   ],
   imports: [

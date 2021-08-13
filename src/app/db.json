@@ -27,6 +27,8 @@
       "distribuidora": "Light",
       "nome": "Unidade 10",
       "numero": "1312",
+      "createdAt": "2021-08-13T20:24:38.773Z",
+      "updatedAt": "2021-08-13T20: 24: 38.773Z",
       "faturas": [
         {
           "data_de_vencimento": "12/11/1998",

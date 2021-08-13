@@ -115,16 +115,17 @@
 
   <!-- ------------ foundConsumerUnitDisplay block ------------- -->
   <div *ngFor="let gottenFoundConsumerUnit of foundInvoicesList">
-    <app-consumer-unit [invoice]="gottenFoundConsumerUnit" [@inOutAnimation]
+
+    <app-invoice-unit [invoice]="gottenFoundConsumerUnit" [@inOutAnimation]
       *ngIf="foundConsumerUnitDisplay; else noFound">
-    </app-consumer-unit>
+    </app-invoice-unit>
     <ng-template #noFound></ng-template>
   </div>
 
   <!-- ------------ listDisplay block ------------- -->
   <div class="wrapper__container--content" *ngIf="listDisplay; else listOff">
     <div *ngFor="let gottenConsumerUnit of invoicesList">
-      <app-consumer-unit [invoice]="gottenConsumerUnit"></app-consumer-unit>
+      <app-invoice-unit [invoice]="gottenConsumerUnit"></app-invoice-unit>
     </div>
   </div>
   <ng-template #listOff></ng-template>

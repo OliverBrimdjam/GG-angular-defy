@@ -1,0 +1,150 @@
+.component {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 90%;
+  border-radius: 20px;
+  padding: 0.3em 0 0.3em 0;
+  margin: 0.5em 1em 0.5em 1em;
+
+  background-color: var(--primary-white);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+
+  button {
+    background-color: var(--button-secondary);
+    color: var(--primary-white);
+    border: none;
+    border-radius: 20px;
+    padding: 0.2em 0.7em 0.2em 0.7em;
+    margin: 0 1em 0 1em;
+    font-size: 1em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+  }
+
+  button:active {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    background-color: var(--button-terciary);
+  }
+
+  button:hover{
+    background-color: var(--button-primary);
+  }
+}
+
+.invoice {
+  width: 100%;
+}
+
+.wrapper {
+  width: 80%;
+}
+
+.wrapper__consumerUnit {
+  display: flex;
+  flex-direction: row;
+
+  width: 100%;
+  margin: 0.5em 0 0.5em 0;
+}
+
+.wrapper__consumerUnit__container,
+.wrapper__consumerUnit__containerInvoice{
+  display: flex;
+
+  width: 100%;
+}
+
+.wrapper__consumerUnit__container__line--start{
+  display: flex;
+  justify-content: flex-end;
+
+  width: 20%;
+  min-width: 95px;
+  margin: 0 0.2em 0 1em;
+
+  label{
+    height: fit-content;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    border-radius: 10px;
+
+    text-align: center;
+    background-color: var(--primary-gray);
+  }
+}
+
+.wrapper__consumerUnit__containerInvoice__line--start{
+  display: flex;
+  justify-content: flex-end;
+
+  width: 25.5%;
+  min-width: 95px;
+  margin: 0 0.2em 0 1em;
+
+  label{
+    height: fit-content;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    border-radius: 10px;
+
+    text-align: center;
+    background-color: var(--primary-gray);
+  }
+}
+
+.wrapper__consumerUnit__container__line--end {
+  display: flex;
+  justify-content: flex-start;
+
+  width: 70%;
+  margin: 0 1em 0 0.2em;
+
+  label {
+    width: 100%;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    border-radius: 10px 0 10px 0;
+
+    text-align: start;
+    text-overflow: ellipsis;
+    background-color: var(--terciary-white);
+  }
+}
+
+.wrapper__consumerUnit__containerInvoice__line--end{
+  display: flex;
+  justify-content: flex-start;
+
+  width: 90%; // aqui - comportamento estranho diferente do elemento similar dos outros
+  margin: 0 1em 0.3em 0.2em;
+
+  label {
+    display: flex;
+    justify-content: flex-start;
+
+    width: 100%;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    border-radius: 10px 0 10px 0;
+
+    text-align: start;
+    text-overflow: ellipsis;
+    background-color: var(--terciary-white);
+
+    p {
+      margin: 0.3em 1em 0.3em 1em ;
+    }
+  }
+}
+
+@media (max-width: 640px){
+  .component{
+    flex-direction: column;
+
+    margin: 1em 0.3em 1em 0.3em;
+    width: 97%;
+
+    button{
+      margin: 1em 0 1em 0;
+    }
+  }
+}
