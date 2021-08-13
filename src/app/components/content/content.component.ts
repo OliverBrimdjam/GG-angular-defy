@@ -114,6 +114,13 @@ export class ContentComponent implements OnInit {
     this.foundConsumerUnitDisplay = true;
   }
 
+  idMatchfilter({ id }) {
+    let match;
+    id == this.consumerUnitCmd.id ? match = true : match = false;
+    console.log("element keys");
+    console.log(element);
+    return match;
+  }
 
   resetToSTD() {
     this.consumerUnit = {
@@ -146,17 +153,19 @@ export class ContentComponent implements OnInit {
   }
 
   getConsumerUnit() {
-    if (!this.consumerUnitCmd.id && this.consumerUnitCmd.id !== 0) {
-      alert("O campo ID é obrigatório para essa busca");
-      return;
-    }
+    let metchedResults = this.consumerUnitsList.filter((element) => this.idMatchfilter(element));
 
-    this.service.getConsumerUnit(this.consumerUnitCmd.id).toPromise().then((data) => {
-      this.foundConsumerUnit = data;
-      this.listDisplay = false;
-      this.switchFoundDisplay();
-      this.resetToSTD();
-    }).catch((err) => alert('Unidade não encontrada: erro status ' + err.status));
+    // if (!this.consumerUnitCmd.id && this.consumerUnitCmd.id !== 0) {
+    //   alert("O campo ID é obrigatório para essa busca");
+    //   return;
+    // }
+
+    // this.service.getConsumerUnit(this.consumerUnitCmd.id).toPromise().then((data) => {
+    //   this.foundConsumerUnit = data;
+    //   this.listDisplay = false;
+    //   this.switchFoundDisplay();
+    //   this.resetToSTD();
+    // }).catch((err) => alert('Unidade não encontrada: erro status ' + err.status));
   }
 
   postConsumerUnitList() {

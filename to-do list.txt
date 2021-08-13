@@ -8,7 +8,7 @@ to-do list
 [x] - consertar largura do html para 100% da viewport
 [x] - fazer validação de campos do command e add
 [x] - centralizar estilos no arquivo de estilos globais tal qual foi com h1
-[ ] - revisar idiomas da UI para um só
+[x] - revisar idiomas da UI para um só
 [ ] - corrigir tags do consumerUnit.component quanto ao português
 [ ] - fazer a parte de faturas funcionar
 [ ] - implementar testes automatizados
@@ -16,3 +16,4 @@ to-do list
 [ ] - adicionar botão de cancelamento
 [ ] - criar solução para campos do delete e consult
 [ ] - desmockar aplicação
+[ ] - revisar tipos Any
