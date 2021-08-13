@@ -3,16 +3,17 @@
     <h1>Unidades Consumidoras</h1>
     <div class="wrapper__header__options">
       <button class="wrapper__header__options__button--add" (click)="switchAddDisplay()">+</button>
-      <button class="wrapper__header__options__button--list" (click)="switchListDisplay()">
-        Listar
-      </button>
-      <button class="wrapper__header__options__button--more"
-        (click)="switchCommandDisplay()">&nbsp;&nbsp;&nbsp;</button>
+      <button class="wrapper__header__options__button--update"
+        (click)="switchUpdateDisplay()">&nbsp;&nbsp;&nbsp;</button>
+      <button class="wrapper__header__options__button--search"
+        (click)="switchSearchDisplay()">&nbsp;&nbsp;&nbsp;</button>
+      <button class="wrapper__header__options__button--del" (click)="switchDeleteDisplay()">&nbsp;&nbsp;&nbsp;</button>
     </div>
   </div>
 
   <hr />
 
+  <!-- ------------ addDisplay block ------------- -->
   <div class="wrapper__container--save" [@inOutAnimation] *ngIf="addDisplay; else addOff">
     <div class="wrapper__container--save__wrapper--content">
       <label for="nome">Nome</label>
@@ -30,15 +31,19 @@
 
     <div class="wrapper__container--save__wrapper--buttons">
       <button (click)="postConsumerUnitList()">Salvar</button>
+      <button (click)="getConsumerUnitList()">Cancelar</button>
     </div>
   </div>
   <ng-template #addOff></ng-template>
 
-  <div class="wrapper__container--command" [@inOutAnimation] *ngIf="commandDisplay; else cmdOff">
-    <div class="wrapper__container--command__wrapper--content">
+  <!-- ------------ updateDisplay block ------------- -->
+  <div class="wrapper__container--update" [@inOutAnimation] *ngIf="updateDisplay; else updateOff">
+    <div class="wrapper__container--update__wrapper--content">
 
       <label for="nome">ID da unidade</label>
-      <div><input type="text" name="nome" [(ngModel)]="consumerUnitCmd.id" /></div>
+      <div>
+        <input type="text" name="nome" [(ngModel)]="consumerUnitCmd.id" placeholder="id da unidade a ser atualizada" />
+      </div>
 
       <label for="nome">Nome</label>
       <div><input type="text" name="nome" [(ngModel)]="consumerUnitCmd.nome" /></div>
@@ -53,21 +58,66 @@
       <div><input type="text" name="distribuidora" [(ngModel)]="consumerUnitCmd.distribuidora" /></div>
 
     </div>
-    <div class="wrapper__container--command__wrapper--buttons">
-      <button (click)="getConsumerUnit()">Consultar</button>
+    <div class="wrapper__container--update__wrapper--buttons">
       <button (click)="putConsumerUnit()">Atualizar</button>
-      <button (click)="delConsumerUnit()">Deletar</button>
+      <button (click)="getConsumerUnitList()">Cancelar</button>
     </div>
   </div>
-  <ng-template #cmdOff></ng-template>
+  <ng-template #updateOff></ng-template>
 
-  <div>
-    <app-consumer-unit [consumerUnit]="foundConsumerUnit" [@inOutAnimation]
+  <!-- ------------ searchDisplay block ------------- -->
+  <div class="wrapper__container--search" [@inOutAnimation] *ngIf="searchDisplay; else searchOff">
+    <div class="wrapper__container--search__wrapper--content">
+
+      <label for="nome">ID da unidade</label>
+      <div>
+        <input type="text" name="nome" [(ngModel)]="consumerUnitCmd.id" />
+      </div>
+
+      <label for="nome">Nome</label>
+      <div><input type="text" name="nome" [(ngModel)]="consumerUnitCmd.nome" /></div>
+
+      <label for="numero">Numero</label>
+      <div><input type="text" name="numero" [(ngModel)]="consumerUnitCmd.numero" /></div>
+
+      <label for="distribuidora">Distribuidora</label>
+      <div><input type="text" name="distribuidora" [(ngModel)]="consumerUnitCmd.distribuidora" /></div>
+
+    </div>
+    <div class="wrapper__container--search__wrapper--buttons">
+      <button (click)="getConsumerUnitById()">Consultar por ID</button>
+      <button (click)="getConsumerUnitByName()">Consultar por Nome</button>
+      <button (click)="getConsumerUnitByNumber()">Consultar por Número</button>
+      <button (click)="getConsumerUnitByDist()">Consultar por Distribuidora</button>
+      <button (click)="getConsumerUnitList()">Cancelar</button>
+    </div>
+  </div>
+  <ng-template #searchOff></ng-template>
+
+  <!-- ------------ deleteDisplay block ------------- -->
+  <div class="wrapper__container--del" [@inOutAnimation] *ngIf="deleteDisplay; else delOff">
+    <div class="wrapper__container--del__wrapper--content">
+
+      <label for="nome">ID da unidade</label>
+      <div><input type="text" name="nome" [(ngModel)]="consumerUnitCmd.id" /></div>
+
+    </div>
+    <div class="wrapper__container--del__wrapper--buttons">
+      <button (click)="delConsumerUnit()">Deletar</button>
+      <button (click)="getConsumerUnitList()">Cancelar</button>
+    </div>
+  </div>
+  <ng-template #delOff></ng-template>
+
+  <!-- ------------ foundConsumerUnitDisplay block ------------- -->
+  <div *ngFor="let gottenFoundConsumerUnit of foundConsumerUnitList">
+    <app-consumer-unit [consumerUnit]="gottenFoundConsumerUnit" [@inOutAnimation]
       *ngIf="foundConsumerUnitDisplay; else noFound">
     </app-consumer-unit>
     <ng-template #noFound></ng-template>
   </div>
 
+  <!-- ------------ listDisplay block ------------- -->
   <div class="wrapper__container--content" *ngIf="listDisplay; else listOff">
     <div *ngFor="let gottenConsumerUnit of consumerUnitsList">
       <app-consumer-unit [consumerUnit]="gottenConsumerUnit"></app-consumer-unit>

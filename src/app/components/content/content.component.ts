@@ -40,9 +40,11 @@ export class ContentComponent implements OnInit {
   onSend = new EventEmitter<any>();
 
   foundConsumerUnitDisplay: boolean = false;
-  commandDisplay: boolean = false;
+  updateDisplay: boolean = false;
   listDisplay: boolean = true;
   addDisplay: boolean = false;
+  deleteDisplay: boolean = false;
+  searchDisplay: boolean = false;
 
   consumerUnitsList: ConsumerUnitResponse[] = [];
   consumerUnit: ConsumerUnit = {
@@ -65,13 +67,15 @@ export class ContentComponent implements OnInit {
     nome: '',
     numero: '',
   };
-  foundConsumerUnit: ConsumerUnitResponse = {
-    id: 0,
-    endereco: '',
-    distribuidora: '',
-    nome: '',
-    numero: '',
-  };
+  foundConsumerUnitList: ConsumerUnitResponse[] = [];
+
+  // {
+  //   id: 0,
+  //   endereco: '',
+  //   distribuidora: '',
+  //   nome: '',
+  //   numero: '',
+  // };
 
 
 
@@ -79,6 +83,7 @@ export class ContentComponent implements OnInit {
   constructor(private service: ConsumerUnitService) { }
 
   ngOnInit(): void {
+    this.consumerUnitCmd.id = undefined!;
     this.getConsumerUnitList();
   }
 
@@ -86,41 +91,87 @@ export class ContentComponent implements OnInit {
     this.onSend.emit(this.consumerUnitsList);
   }
 
-  switchCommandDisplay() {
+  switchSearchDisplay() {
     this.addDisplay = false;
-    this.commandDisplay = true;
+    this.updateDisplay = false;
     this.listDisplay = false;
     this.foundConsumerUnitDisplay = false;
+    this.deleteDisplay = false;
+    this.searchDisplay = true;
+  }
+
+  switchDeleteDisplay() {
+    this.addDisplay = false;
+    this.updateDisplay = false;
+    this.listDisplay = false;
+    this.foundConsumerUnitDisplay = false;
+    this.deleteDisplay = true;
+    this.searchDisplay = false;
+  }
+
+  switchUpdateDisplay() {
+    this.addDisplay = false;
+    this.updateDisplay = true;
+    this.listDisplay = false;
+    this.foundConsumerUnitDisplay = false;
+    this.deleteDisplay = false;
+    this.searchDisplay = false;
   }
 
   switchAddDisplay() {
     this.addDisplay = true;
-    this.commandDisplay = false;
+    this.updateDisplay = false;
     this.listDisplay = false;
     this.foundConsumerUnitDisplay = false;
+    this.deleteDisplay = false;
+    this.searchDisplay = false;
   }
 
   switchListDisplay() {
     this.addDisplay = false;
-    this.commandDisplay = false;
+    this.updateDisplay = false;
     this.listDisplay = true;
     this.foundConsumerUnitDisplay = false;
+    this.deleteDisplay = false;
+    this.searchDisplay = false;
   }
 
   switchFoundDisplay() {
     this.addDisplay = false;
-    this.commandDisplay = false;
+    this.updateDisplay = false;
     this.listDisplay = false;
     this.foundConsumerUnitDisplay = true;
+    this.deleteDisplay = false;
+    this.searchDisplay = false;
   }
 
-  // idMatchfilter({ id }) {
-  //   let match;
-  //   id == this.consumerUnitCmd.id ? match = true : match = false;
-  //   console.log("element keys");
-  //   console.log(element);
-  //   return match;
-  // }
+  idMatchfilter({ id }: { id: any }) {
+    let match;
+    id == this.consumerUnitCmd.id ? match = true : match = false;
+
+    return match;
+  }
+
+  nameMatchfilter({ nome }: { nome: any }) {
+    let match;
+    nome == this.consumerUnitCmd.nome ? match = true : match = false;
+
+    return match;
+  }
+
+  numberMatchfilter({ numero }: { numero: any }) {
+    let match;
+    numero == this.consumerUnitCmd.numero ? match = true : match = false;
+
+    return match;
+  }
+
+  distMatchfilter({ distribuidora }: { distribuidora: any }) {
+    let match;
+    distribuidora == this.consumerUnitCmd.distribuidora ? match = true : match = false;
+
+    return match;
+  }
 
   resetToSTD() {
     this.consumerUnit = {
@@ -152,16 +203,51 @@ export class ContentComponent implements OnInit {
     }).catch((err) => alert('Lista não encontrada: erro status ' + err.status));
   }
 
-  getConsumerUnit() {
-    // let metchedResults = this.consumerUnitsList.filter((element) => this.idMatchfilter(element));
+  getConsumerUnitByName() {
+    if (!this.consumerUnitCmd.nome) {
+      alert("O campo Nome é obrigatório para esta busca.");
+      return;
+    }
 
-    // if (!this.consumerUnitCmd.id && this.consumerUnitCmd.id !== 0) {
-    //   alert("O campo ID é obrigatório para essa busca");
-    //   return;
-    // }
+    this.foundConsumerUnitList = this.consumerUnitsList.filter((element) => this.nameMatchfilter(element));
+    this.switchFoundDisplay();
+    this.resetToSTD();
+  }
+
+  getConsumerUnitByDist() {
+    if (!this.consumerUnitCmd.distribuidora) {
+      alert("O campo Nome é obrigatório para esta busca.");
+      return;
+    }
+
+    this.foundConsumerUnitList = this.consumerUnitsList.filter((element) => this.distMatchfilter(element));
+    this.switchFoundDisplay();
+    this.resetToSTD();
+  }
+
+  getConsumerUnitByNumber() {
+    if (!this.consumerUnitCmd.numero) {
+      alert("O campo Número é obrigatório para esta busca.");
+      return;
+    }
+
+    this.foundConsumerUnitList = this.consumerUnitsList.filter((element) => this.numberMatchfilter(element));
+    this.switchFoundDisplay();
+    this.resetToSTD();
+  }
+
+  getConsumerUnitById() {
+    if (!this.consumerUnitCmd.id && this.consumerUnitCmd.id !== 0) {
+      alert("O campo ID é obrigatório para esta busca.");
+      return;
+    }
+
+    this.foundConsumerUnitList = this.consumerUnitsList.filter((element) => this.idMatchfilter(element));
+    this.switchFoundDisplay();
+    this.resetToSTD();
 
     // this.service.getConsumerUnit(this.consumerUnitCmd.id).toPromise().then((data) => {
-    //   this.foundConsumerUnit = data;
+    //   this.foundConsumerUnitList = data;
     //   this.listDisplay = false;
     //   this.switchFoundDisplay();
     //   this.resetToSTD();

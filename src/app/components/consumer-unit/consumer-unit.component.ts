@@ -36,9 +36,11 @@ export class ConsumerUnitComponent implements OnInit {
   }
 
   switchInvoiceDisplay() {
-    if (this.data[5] == undefined) {
+    const faturas = this.data.find((chave: any) => chave.label === 'faturas') || [];
+
+    if (faturas.length === 0) {
       alert("Não existem faturas associadas a esta Unidade Consumidora");
-    } else if (this.data[5].label == 'faturas') {
+    } else {
       this.invoiceDisplay ? this.invoiceDisplay = false : this.invoiceDisplay = true;
     }
   };
