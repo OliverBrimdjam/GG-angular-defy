@@ -114,13 +114,13 @@ export class ContentComponent implements OnInit {
     this.foundConsumerUnitDisplay = true;
   }
 
-  idMatchfilter({ id }) {
-    let match;
-    id == this.consumerUnitCmd.id ? match = true : match = false;
-    console.log("element keys");
-    console.log(element);
-    return match;
-  }
+  // idMatchfilter({ id }) {
+  //   let match;
+  //   id == this.consumerUnitCmd.id ? match = true : match = false;
+  //   console.log("element keys");
+  //   console.log(element);
+  //   return match;
+  // }
 
   resetToSTD() {
     this.consumerUnit = {
@@ -153,7 +153,7 @@ export class ContentComponent implements OnInit {
   }
 
   getConsumerUnit() {
-    let metchedResults = this.consumerUnitsList.filter((element) => this.idMatchfilter(element));
+    // let metchedResults = this.consumerUnitsList.filter((element) => this.idMatchfilter(element));
 
     // if (!this.consumerUnitCmd.id && this.consumerUnitCmd.id !== 0) {
     //   alert("O campo ID é obrigatório para essa busca");
