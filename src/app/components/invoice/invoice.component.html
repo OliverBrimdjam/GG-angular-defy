@@ -1,1 +1,130 @@
-<p>invoice works!</p>
+<div class="wrapper">
+  <div class="wrapper__header">
+    <h1>Faturas</h1>
+    <div class="wrapper__header__options">
+      <button class="wrapper__header__options__button--add" (click)="displaySwitcher('addDisplay')">+</button>
+      <button class="wrapper__header__options__button--update"
+        (click)="displaySwitcher('updateDisplay')">&nbsp;&nbsp;&nbsp;</button>
+      <button class="wrapper__header__options__button--search"
+        (click)="displaySwitcher('searchDisplay')">&nbsp;&nbsp;&nbsp;</button>
+      <button class="wrapper__header__options__button--del"
+        (click)="displaySwitcher('deleteDisplay')">&nbsp;&nbsp;&nbsp;</button>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- ------------ addDisplay block ------------- -->
+  <div class="wrapper__container--save" [@inOutAnimation] *ngIf="addDisplay; else addOff">
+    <div class="wrapper__container--save__wrapper--content">
+      <label for="vencimento">Data de Vencimento</label>
+      <div><input type="text" name="vencimento" [(ngModel)]="invoice.data_de_vencimento" /></div>
+
+      <label for="consumo">Consumo</label>
+      <div><input type="text" name="consumo" [(ngModel)]="invoice.consumo" /></div>
+
+      <label for="valor">Valor</label>
+      <div><input type="text" name="valor" [(ngModel)]="invoice.valor" /></div>
+
+      <label for="unidadeConsumidoraId">Unidade Consumidora</label>
+      <div><input type="text" name="unidadeConsumidoraId" [(ngModel)]="invoice.unidadeConsumidoraId" /></div>
+    </div>
+
+    <div class="wrapper__container--save__wrapper--buttons">
+      <button (click)="postConsumerUnitList()">Salvar</button>
+      <button (click)="getConsumerUnitList()">Cancelar</button>
+    </div>
+  </div>
+  <ng-template #addOff></ng-template>
+
+  <!-- ------------ updateDisplay block ------------- -->
+  <div class="wrapper__container--update" [@inOutAnimation] *ngIf="updateDisplay; else updateOff">
+    <div class="wrapper__container--update__wrapper--content">
+
+      <label for="nome">ID da fatura</label>
+      <div>
+        <input type="text" name="nome" [(ngModel)]="invoiceCmd.id" placeholder="id da unidade a ser atualizada" />
+      </div>
+
+      <label for="vencimento">Data de Vencimento</label>
+      <div><input type="text" name="vencimento" [(ngModel)]="invoiceCmd.data_de_vencimento" /></div>
+
+      <label for="consumo">Consumo</label>
+      <div><input type="text" name="consumo" [(ngModel)]="invoiceCmd.consumo" /></div>
+
+      <label for="valor">Valor</label>
+      <div><input type="text" name="valor" [(ngModel)]="invoiceCmd.valor" /></div>
+
+      <label for="unidadeConsumidoraId">Unidade Consumidora</label>
+      <div><input type="text" name="unidadeConsumidoraId" [(ngModel)]="invoiceCmd.unidadeConsumidoraId" /></div>
+
+    </div>
+    <div class="wrapper__container--update__wrapper--buttons">
+      <button (click)="putConsumerUnit()">Atualizar</button>
+      <button (click)="getConsumerUnitList()">Cancelar</button>
+    </div>
+  </div>
+  <ng-template #updateOff></ng-template>
+
+  <!-- ------------ searchDisplay block ------------- -->
+  <div class="wrapper__container--search" [@inOutAnimation] *ngIf="searchDisplay; else searchOff">
+    <div class="wrapper__container--search__wrapper--content">
+
+      <label for="nome">ID da fatura</label>
+      <div>
+        <input type="text" name="nome" [(ngModel)]="invoiceCmd.id" placeholder="id da unidade a ser atualizada" />
+      </div>
+
+      <label for="vencimento">Data de Vencimento</label>
+      <div><input type="text" name="vencimento" [(ngModel)]="invoiceCmd.data_de_vencimento" /></div>
+
+      <label for="consumo">Consumo</label>
+      <div><input type="text" name="consumo" [(ngModel)]="invoiceCmd.consumo" /></div>
+
+      <label for="valor">Valor</label>
+      <div><input type="text" name="valor" [(ngModel)]="invoiceCmd.valor" /></div>
+
+      <label for="unidadeConsumidoraId">Unidade Consumidora</label>
+      <div><input type="text" name="unidadeConsumidoraId" [(ngModel)]="invoiceCmd.unidadeConsumidoraId" /></div>
+
+    </div>
+    <div class="wrapper__container--search__wrapper--buttons">
+      <button (click)="getConsumerUnitById()">Consultar por ID</button>
+      <button (click)="getConsumerUnitByName()">Consultar por Data de Vencimento</button>
+      <button (click)="getConsumerUnitByNumber()">Consultar por Valor</button>
+      <button (click)="getConsumerUnitByDist()">Consultar por Unidade Consumidora</button>
+      <button (click)="getConsumerUnitList()">Cancelar</button>
+    </div>
+  </div>
+  <ng-template #searchOff></ng-template>
+
+  <!-- ------------ deleteDisplay block ------------- -->
+  <div class="wrapper__container--del" [@inOutAnimation] *ngIf="deleteDisplay; else delOff">
+    <div class="wrapper__container--del__wrapper--content">
+
+      <label for="nome">ID da unidade</label>
+      <div><input type="text" name="nome" [(ngModel)]="invoiceCmd.id" /></div>
+
+    </div>
+    <div class="wrapper__container--del__wrapper--buttons">
+      <button (click)="delConsumerUnit()">Deletar</button>
+      <button (click)="getConsumerUnitList()">Cancelar</button>
+    </div>
+  </div>
+  <ng-template #delOff></ng-template>
+
+  <!-- ------------ foundConsumerUnitDisplay block ------------- -->
+  <div *ngFor="let gottenFoundConsumerUnit of foundInvoicesList">
+    <app-consumer-unit [invoice]="gottenFoundConsumerUnit" [@inOutAnimation]
+      *ngIf="foundConsumerUnitDisplay; else noFound">
+    </app-consumer-unit>
+    <ng-template #noFound></ng-template>
+  </div>
+
+  <!-- ------------ listDisplay block ------------- -->
+  <div class="wrapper__container--content" *ngIf="listDisplay; else listOff">
+    <div *ngFor="let gottenConsumerUnit of invoicesList">
+      <app-consumer-unit [invoice]="gottenConsumerUnit"></app-consumer-unit>
+    </div>
+  </div>
+  <ng-template #listOff></ng-template>

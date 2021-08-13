@@ -3,7 +3,6 @@ import { ConsumerUnitResponse } from './../../models/consumer-unit-response';
 import { ConsumerUnitService } from './../../service/consumer-unit.service';
 import { ConsumerUnit } from './../../models/consumer-unit';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ThisReceiver } from '@angular/compiler';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
@@ -113,51 +112,6 @@ export class ContentComponent implements OnInit {
   switchSearchDisplay() {
     this.displaySwitcher('searchDisplay');
   }
-
-  // switchDeleteDisplay() {
-  //   this.addDisplay = false;
-  //   this.updateDisplay = false;
-  //   this.listDisplay = false;
-  //   this.foundConsumerUnitDisplay = false;
-  //   this.deleteDisplay = true;
-  //   this.searchDisplay = false;
-  // }
-
-  // switchUpdateDisplay() {
-  //   this.addDisplay = false;
-  //   this.updateDisplay = true;
-  //   this.listDisplay = false;
-  //   this.foundConsumerUnitDisplay = false;
-  //   this.deleteDisplay = false;
-  //   this.searchDisplay = false;
-  // }
-
-  // switchAddDisplay() {
-  //   this.addDisplay = true;
-  //   this.updateDisplay = false;
-  //   this.listDisplay = false;
-  //   this.foundConsumerUnitDisplay = false;
-  //   this.deleteDisplay = false;
-  //   this.searchDisplay = false;
-  // }
-
-  // switchListDisplay() {
-  //   this.addDisplay = false;
-  //   this.updateDisplay = false;
-  //   this.listDisplay = true;
-  //   this.foundConsumerUnitDisplay = false;
-  //   this.deleteDisplay = false;
-  //   this.searchDisplay = false;
-  // }
-
-  // switchFoundDisplay() {
-  //   this.addDisplay = false;
-  //   this.updateDisplay = false;
-  //   this.listDisplay = false;
-  //   this.foundConsumerUnitDisplay = true;
-  //   this.deleteDisplay = false;
-  //   this.searchDisplay = false;
-  // }
 
   idMatchfilter({ id }: { id: any }) {
     let match;
