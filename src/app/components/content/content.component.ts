@@ -69,16 +69,6 @@ export class ContentComponent implements OnInit {
   };
   foundConsumerUnitList: ConsumerUnitResponse[] = [];
 
-  // {
-  //   id: 0,
-  //   endereco: '',
-  //   distribuidora: '',
-  //   nome: '',
-  //   numero: '',
-  // };
-
-
-
 
   constructor(private service: ConsumerUnitService) { }
 
@@ -91,59 +81,83 @@ export class ContentComponent implements OnInit {
     this.onSend.emit(this.consumerUnitsList);
   }
 
+  displaySwitcher(display: string) {
+    this.addDisplay = false;
+    this.updateDisplay = false;
+    this.listDisplay = false;
+    this.foundConsumerUnitDisplay = false;
+    this.deleteDisplay = false;
+    this.searchDisplay = false;
+
+    switch (display) {
+      case 'addDisplay':
+        this.addDisplay = true;
+        break;
+      case 'updateDisplay':
+        this.updateDisplay = true;
+        break;
+      case 'foundConsumerUnitDisplay':
+        this.foundConsumerUnitDisplay = true;
+        break;
+      case 'deleteDisplay':
+        this.deleteDisplay = true;
+        break;
+      case 'searchDisplay':
+        this.searchDisplay = true;
+        break;
+      case 'listDisplay':
+        this.listDisplay = true;
+    }
+  }
+
   switchSearchDisplay() {
-    this.addDisplay = false;
-    this.updateDisplay = false;
-    this.listDisplay = false;
-    this.foundConsumerUnitDisplay = false;
-    this.deleteDisplay = false;
-    this.searchDisplay = true;
+    this.displaySwitcher('searchDisplay');
   }
 
-  switchDeleteDisplay() {
-    this.addDisplay = false;
-    this.updateDisplay = false;
-    this.listDisplay = false;
-    this.foundConsumerUnitDisplay = false;
-    this.deleteDisplay = true;
-    this.searchDisplay = false;
-  }
+  // switchDeleteDisplay() {
+  //   this.addDisplay = false;
+  //   this.updateDisplay = false;
+  //   this.listDisplay = false;
+  //   this.foundConsumerUnitDisplay = false;
+  //   this.deleteDisplay = true;
+  //   this.searchDisplay = false;
+  // }
 
-  switchUpdateDisplay() {
-    this.addDisplay = false;
-    this.updateDisplay = true;
-    this.listDisplay = false;
-    this.foundConsumerUnitDisplay = false;
-    this.deleteDisplay = false;
-    this.searchDisplay = false;
-  }
+  // switchUpdateDisplay() {
+  //   this.addDisplay = false;
+  //   this.updateDisplay = true;
+  //   this.listDisplay = false;
+  //   this.foundConsumerUnitDisplay = false;
+  //   this.deleteDisplay = false;
+  //   this.searchDisplay = false;
+  // }
 
-  switchAddDisplay() {
-    this.addDisplay = true;
-    this.updateDisplay = false;
-    this.listDisplay = false;
-    this.foundConsumerUnitDisplay = false;
-    this.deleteDisplay = false;
-    this.searchDisplay = false;
-  }
+  // switchAddDisplay() {
+  //   this.addDisplay = true;
+  //   this.updateDisplay = false;
+  //   this.listDisplay = false;
+  //   this.foundConsumerUnitDisplay = false;
+  //   this.deleteDisplay = false;
+  //   this.searchDisplay = false;
+  // }
 
-  switchListDisplay() {
-    this.addDisplay = false;
-    this.updateDisplay = false;
-    this.listDisplay = true;
-    this.foundConsumerUnitDisplay = false;
-    this.deleteDisplay = false;
-    this.searchDisplay = false;
-  }
+  // switchListDisplay() {
+  //   this.addDisplay = false;
+  //   this.updateDisplay = false;
+  //   this.listDisplay = true;
+  //   this.foundConsumerUnitDisplay = false;
+  //   this.deleteDisplay = false;
+  //   this.searchDisplay = false;
+  // }
 
-  switchFoundDisplay() {
-    this.addDisplay = false;
-    this.updateDisplay = false;
-    this.listDisplay = false;
-    this.foundConsumerUnitDisplay = true;
-    this.deleteDisplay = false;
-    this.searchDisplay = false;
-  }
+  // switchFoundDisplay() {
+  //   this.addDisplay = false;
+  //   this.updateDisplay = false;
+  //   this.listDisplay = false;
+  //   this.foundConsumerUnitDisplay = true;
+  //   this.deleteDisplay = false;
+  //   this.searchDisplay = false;
+  // }
 
   idMatchfilter({ id }: { id: any }) {
     let match;
@@ -188,7 +202,7 @@ export class ContentComponent implements OnInit {
       numero: '',
     };
     this.consumerUnitCmd = {
-      id: 0,
+      id: undefined!,
       endereco: '',
       distribuidora: '',
       nome: '',
@@ -199,7 +213,7 @@ export class ContentComponent implements OnInit {
   getConsumerUnitList() {
     this.service.getConsumerUnits().toPromise().then(data => {
       this.consumerUnitsList = data;
-      this.switchListDisplay();
+      this.displaySwitcher('listDisplay');
     }).catch((err) => alert('Lista não encontrada: erro status ' + err.status));
   }
 
@@ -210,7 +224,13 @@ export class ContentComponent implements OnInit {
     }
 
     this.foundConsumerUnitList = this.consumerUnitsList.filter((element) => this.nameMatchfilter(element));
-    this.switchFoundDisplay();
+    if (this.foundConsumerUnitList.length == 0) {
+      alert('Nenhum resultado encontrado');
+      this.displaySwitcher('searchDisplay');
+      this.resetToSTD();
+      return;
+    }
+    this.displaySwitcher('foundConsumerUnitDisplay');
     this.resetToSTD();
   }
 
@@ -221,7 +241,13 @@ export class ContentComponent implements OnInit {
     }
 
     this.foundConsumerUnitList = this.consumerUnitsList.filter((element) => this.distMatchfilter(element));
-    this.switchFoundDisplay();
+    if (this.foundConsumerUnitList.length == 0) {
+      alert('Nenhum resultado encontrado');
+      this.displaySwitcher('searchDisplay');
+      this.resetToSTD();
+      return;
+    }
+    this.displaySwitcher('foundConsumerUnitDisplay');
     this.resetToSTD();
   }
 
@@ -232,7 +258,14 @@ export class ContentComponent implements OnInit {
     }
 
     this.foundConsumerUnitList = this.consumerUnitsList.filter((element) => this.numberMatchfilter(element));
-    this.switchFoundDisplay();
+    console.log(this.foundConsumerUnitList.length);
+    if (this.foundConsumerUnitList.length == 0) {
+      alert('Nenhum resultado encontrado');
+      this.displaySwitcher('searchDisplay');
+      this.resetToSTD();
+      return;
+    }
+    this.displaySwitcher('foundConsumerUnitDisplay');
     this.resetToSTD();
   }
 
@@ -243,7 +276,13 @@ export class ContentComponent implements OnInit {
     }
 
     this.foundConsumerUnitList = this.consumerUnitsList.filter((element) => this.idMatchfilter(element));
-    this.switchFoundDisplay();
+    if (this.foundConsumerUnitList.length == 0) {
+      alert('Nenhum resultado encontrado');
+      this.displaySwitcher('searchDisplay');
+      this.resetToSTD();
+      return;
+    }
+    this.displaySwitcher('foundConsumerUnitDisplay');
     this.resetToSTD();
 
     // this.service.getConsumerUnit(this.consumerUnitCmd.id).toPromise().then((data) => {

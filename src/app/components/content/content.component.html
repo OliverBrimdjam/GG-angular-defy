@@ -2,12 +2,13 @@
   <div class="wrapper__header">
     <h1>Unidades Consumidoras</h1>
     <div class="wrapper__header__options">
-      <button class="wrapper__header__options__button--add" (click)="switchAddDisplay()">+</button>
+      <button class="wrapper__header__options__button--add" (click)="displaySwitcher('addDisplay')">+</button>
       <button class="wrapper__header__options__button--update"
-        (click)="switchUpdateDisplay()">&nbsp;&nbsp;&nbsp;</button>
+        (click)="displaySwitcher('updateDisplay')">&nbsp;&nbsp;&nbsp;</button>
       <button class="wrapper__header__options__button--search"
-        (click)="switchSearchDisplay()">&nbsp;&nbsp;&nbsp;</button>
-      <button class="wrapper__header__options__button--del" (click)="switchDeleteDisplay()">&nbsp;&nbsp;&nbsp;</button>
+        (click)="displaySwitcher('searchDisplay')">&nbsp;&nbsp;&nbsp;</button>
+      <button class="wrapper__header__options__button--del"
+        (click)="displaySwitcher('deleteDisplay')">&nbsp;&nbsp;&nbsp;</button>
     </div>
   </div>
 
