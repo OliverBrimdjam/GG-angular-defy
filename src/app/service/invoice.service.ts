@@ -1,9 +1,10 @@
+import { InvoiceResponse } from './../models/invoice-response';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { host } from './shared';
 import { Invoice } from '../models/invoice';
-import { InvoiceResponse } from '../models/invoice-response';
 import { InvoiceCommand } from '../models/invoice-command';
+import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +18,11 @@ export class InvoiceService {
   constructor(private httpClient: HttpClient) { }
 
   list() {
-    return this.httpClient.get<any>(
-      this.url
-    );
+    return from(this.httpClient.get<InvoiceResponse[]>(this.url));
   }
 
   show(id: number) {
-    return this.httpClient.get<any>(
+    return this.httpClient.get<InvoiceResponse>(
       this.url + '/' + id
     );
   }
@@ -43,7 +42,7 @@ export class InvoiceService {
   }
 
   delete(id: number) {
-    return this.httpClient.delete<any>(
+    return this.httpClient.delete<InvoiceResponse>(
       this.url + '/' + id
     );
   }

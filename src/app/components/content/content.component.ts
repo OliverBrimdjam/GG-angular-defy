@@ -4,8 +4,6 @@ import { ConsumerUnitService } from './../../service/consumer-unit.service';
 import { ConsumerUnit } from './../../models/consumer-unit';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-content',
@@ -48,7 +46,7 @@ export class ContentComponent implements OnInit {
   searchDisplay: boolean = false;
 
   consumerUnitsList: ConsumerUnitResponse[] = [];
-  consumerUnitsList$: Observable<any> = this.service.list();
+  // consumerUnitsList: Observable<any> = ;
   consumerUnit: ConsumerUnit = {
     endereco: '',
     distribuidora: '',
@@ -78,7 +76,6 @@ export class ContentComponent implements OnInit {
     this.consumerUnitCmd.id = undefined!;
     console.table(this.service.list());
     this.getConsumerUnitList();
-    // this.consumerUnitsList$ = this.service.list().pipe(tap(v => console.log(v))).subscribe();
   }
 
   sendData() {
@@ -166,18 +163,19 @@ export class ContentComponent implements OnInit {
   }
 
   getConsumerUnitList() {
-    this.service.list().subscribe((data) => {
-      this.consumerUnitsList$ = data;
+    this.service.list().toPromise().then(data => {
+      this.consumerUnitsList = data;
+      this.displaySwitcher('listDisplay');
+    }).catch((err) => alert('Lista não encontrada: erro status ' + err.status));
 
-    });
-    this.displaySwitcher('listDisplay');
-    // -----------------
-    // this.service.list().toPromise().then(data => {
-    //   this.consumerUnitsList$ = data;
-    //   console.log('retorno da promise');
-    //   console.log(data);
-    //   this.displaySwitcher('listDisplay');
-    // }).catch((err) => alert('Lista não encontrada: erro status ' + err.status));
+    // let displayOn = this.displaySwitcher;
+    // this.service.list().subscribe({
+    //   next(response) {
+    //     console.log(response);
+    //     displayOn('listDisplay');
+    //   },
+    //   error(err) { console.error('Error: ' + err); },
+    // });
   }
 
   getConsumerUnitByName() {

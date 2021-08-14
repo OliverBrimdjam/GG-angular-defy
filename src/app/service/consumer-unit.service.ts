@@ -4,7 +4,7 @@ import { ConsumerUnit } from './../models/consumer-unit';
 import { host } from './shared';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap, map, pluck } from 'rxjs/operators';
+import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,16 +17,11 @@ export class ConsumerUnitService {
   constructor(private httpClient: HttpClient) { }
 
   list() {
-    return this.httpClient.get<any>(this.url)
-      .pipe(
-        tap(valor => console.log(valor)),
-        pluck('payload'))
-
-      ;
+    return from(this.httpClient.get<ConsumerUnitResponse[]>(this.url));
   }
 
   show(id: number) {
-    return this.httpClient.get<any>(
+    return this.httpClient.get<ConsumerUnitResponse>(
       // `http://localhost:3000/unidadeConsumidora/${id}`,
       this.url + '/' + id
     );
@@ -47,7 +42,7 @@ export class ConsumerUnitService {
   }
 
   delete(id: number) {
-    return this.httpClient.delete<any>(
+    return this.httpClient.delete<ConsumerUnitResponse>(
       this.url + '/' + id
     );
   }
