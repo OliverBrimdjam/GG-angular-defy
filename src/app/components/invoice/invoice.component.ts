@@ -76,7 +76,7 @@ export class InvoiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.invoiceCmd.id = undefined!;
-    this.getConsumerUnitList();
+    this.getInvoicesList();
   }
 
   sendData() {
@@ -110,10 +110,6 @@ export class InvoiceComponent implements OnInit {
       case 'listDisplay':
         this.listDisplay = true;
     }
-  }
-
-  switchSearchDisplay() {
-    this.displaySwitcher('searchDisplay');
   }
 
   idMatchfilter({ id }: { id: any }) {
@@ -167,14 +163,14 @@ export class InvoiceComponent implements OnInit {
     };
   }
 
-  getConsumerUnitList() {
+  getInvoicesList() {
     this.service.list().toPromise().then(data => {
       this.invoicesList = data;
       this.displaySwitcher('listDisplay');
     }).catch((err) => alert('Lista não encontrada: erro status ' + err.status));
   }
 
-  getConsumerUnitByName() {
+  getInvoiceByUcId() {
     if (!this.invoiceCmd.unidadeConsumidoraId) {
       alert("O campo Nome é obrigatório para esta busca.");
       return;
@@ -191,7 +187,7 @@ export class InvoiceComponent implements OnInit {
     this.resetToSTD();
   }
 
-  getConsumerUnitByDist() {
+  getInvoiceByDate() {
     if (!this.invoiceCmd.data_de_vencimento) {
       alert("O campo Nome é obrigatório para esta busca.");
       return;
@@ -208,7 +204,7 @@ export class InvoiceComponent implements OnInit {
     this.resetToSTD();
   }
 
-  getConsumerUnitByNumber() {
+  getInvoiceByValue() {
     if (!this.invoiceCmd.valor) {
       alert("O campo Número é obrigatório para esta busca.");
       return;
@@ -226,7 +222,7 @@ export class InvoiceComponent implements OnInit {
     this.resetToSTD();
   }
 
-  getConsumerUnitById() {
+  getInvoiceById() {
     if (!this.invoiceCmd.id && this.invoiceCmd.id !== 0) {
       alert("O campo ID é obrigatório para esta busca.");
       return;
@@ -243,17 +239,17 @@ export class InvoiceComponent implements OnInit {
     this.resetToSTD();
   }
 
-  postConsumerUnitList() {
+  postInvoiceList() {
     this.service.create(this.invoice).toPromise().then(
       (data: InvoiceResponse) => {
         this.invoiceResponse = data;
-        this.getConsumerUnitList();
+        this.getInvoicesList();
         alert("Adicionado com sucesso. ID da Unidade: " + this.invoiceResponse.id);
         this.resetToSTD();
       }).catch((err) => alert('Unidade não cadastrada: erro status ' + err.status));
   }
 
-  putConsumerUnit() {
+  putInvoice() {
     if (!this.invoiceCmd.id && this.invoiceCmd.id !== 0) {
       alert("O campo ID é obrigatório para essa busca");
       return;
@@ -262,13 +258,13 @@ export class InvoiceComponent implements OnInit {
     this.service.update(this.invoiceCmd).toPromise().then(
       (data: InvoiceResponse) => {
         this.invoiceResponse = data;
-        this.getConsumerUnitList();
+        this.getInvoicesList();
         alert("Unidade atualizada. ID da Unidade: " + this.invoiceResponse.id);
         this.resetToSTD();
       }).catch((err) => console.log(err));
   }
 
-  delConsumerUnit() {
+  delInvoice() {
     if (!this.invoiceCmd.id && this.invoiceCmd.id !== 0) {
       alert("O campo ID é obrigatório para essa busca");
       return;
@@ -276,7 +272,7 @@ export class InvoiceComponent implements OnInit {
 
     this.service.delete(this.invoiceCmd.id).toPromise().then(() => {
       alert("Unidade deletada. ID da unidade: " + this.invoiceCmd.id);
-      this.getConsumerUnitList();
+      this.getInvoicesList();
       this.resetToSTD();
     }).catch((err) => console.log(err));
   }

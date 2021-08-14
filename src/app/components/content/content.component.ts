@@ -4,6 +4,8 @@ import { ConsumerUnitService } from './../../service/consumer-unit.service';
 import { ConsumerUnit } from './../../models/consumer-unit';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-content',
@@ -46,6 +48,7 @@ export class ContentComponent implements OnInit {
   searchDisplay: boolean = false;
 
   consumerUnitsList: ConsumerUnitResponse[] = [];
+  consumerUnitsList$: Observable<any> = this.service.list();
   consumerUnit: ConsumerUnit = {
     endereco: '',
     distribuidora: '',
@@ -73,7 +76,9 @@ export class ContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.consumerUnitCmd.id = undefined!;
+    console.table(this.service.list());
     this.getConsumerUnitList();
+    // this.consumerUnitsList$ = this.service.list().pipe(tap(v => console.log(v))).subscribe();
   }
 
   sendData() {
@@ -107,10 +112,6 @@ export class ContentComponent implements OnInit {
       case 'listDisplay':
         this.listDisplay = true;
     }
-  }
-
-  switchSearchDisplay() {
-    this.displaySwitcher('searchDisplay');
   }
 
   idMatchfilter({ id }: { id: any }) {
@@ -165,10 +166,18 @@ export class ContentComponent implements OnInit {
   }
 
   getConsumerUnitList() {
-    this.service.getConsumerUnits().toPromise().then(data => {
-      this.consumerUnitsList = data;
-      this.displaySwitcher('listDisplay');
-    }).catch((err) => alert('Lista não encontrada: erro status ' + err.status));
+    this.service.list().subscribe((data) => {
+      this.consumerUnitsList$ = data;
+
+    });
+    this.displaySwitcher('listDisplay');
+    // -----------------
+    // this.service.list().toPromise().then(data => {
+    //   this.consumerUnitsList$ = data;
+    //   console.log('retorno da promise');
+    //   console.log(data);
+    //   this.displaySwitcher('listDisplay');
+    // }).catch((err) => alert('Lista não encontrada: erro status ' + err.status));
   }
 
   getConsumerUnitByName() {
@@ -248,7 +257,7 @@ export class ContentComponent implements OnInit {
   }
 
   postConsumerUnitList() {
-    this.service.setConsumerUnit(this.consumerUnit).toPromise().then(
+    this.service.create(this.consumerUnit).toPromise().then(
       (data: ConsumerUnitResponse) => {
         this.consumerUnitResponse = data;
         this.getConsumerUnitList();
@@ -263,7 +272,7 @@ export class ContentComponent implements OnInit {
       return;
     }
 
-    this.service.updateConsumerUnit(this.consumerUnitCmd).toPromise().then(
+    this.service.update(this.consumerUnitCmd).toPromise().then(
       (data: ConsumerUnitResponse) => {
         this.consumerUnitResponse = data;
         this.getConsumerUnitList();
@@ -278,7 +287,7 @@ export class ContentComponent implements OnInit {
       return;
     }
 
-    this.service.deleteConsumerUnit(this.consumerUnitCmd.id).toPromise().then(() => {
+    this.service.delete(this.consumerUnitCmd.id).toPromise().then(() => {
       alert("Unidade deletada. ID da unidade: " + this.consumerUnitCmd.id);
       this.getConsumerUnitList();
       this.resetToSTD();

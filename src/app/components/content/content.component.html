@@ -120,7 +120,7 @@
 
   <!-- ------------ listDisplay block ------------- -->
   <div class="wrapper__container--content" *ngIf="listDisplay; else listOff">
-    <div *ngFor="let gottenConsumerUnit of consumerUnitsList">
+    <div *ngFor="let gottenConsumerUnit of consumerUnitsList$ | async">
       <app-consumer-unit [consumerUnit]="gottenConsumerUnit"></app-consumer-unit>
     </div>
   </div>

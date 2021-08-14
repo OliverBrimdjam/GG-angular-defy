@@ -31,8 +31,8 @@
     </div>
 
     <div class="wrapper__container--save__wrapper--buttons">
-      <button (click)="postConsumerUnitList()">Salvar</button>
-      <button (click)="getConsumerUnitList()">Cancelar</button>
+      <button (click)="postInvoiceList()">Salvar</button>
+      <button (click)="getInvoicesList()">Cancelar</button>
     </div>
   </div>
   <ng-template #addOff></ng-template>
@@ -60,8 +60,8 @@
 
     </div>
     <div class="wrapper__container--update__wrapper--buttons">
-      <button (click)="putConsumerUnit()">Atualizar</button>
-      <button (click)="getConsumerUnitList()">Cancelar</button>
+      <button (click)="putInvoice()">Atualizar</button>
+      <button (click)="getInvoicesList()">Cancelar</button>
     </div>
   </div>
   <ng-template #updateOff></ng-template>
@@ -89,11 +89,11 @@
 
     </div>
     <div class="wrapper__container--search__wrapper--buttons">
-      <button (click)="getConsumerUnitById()">Consultar por ID</button>
-      <button (click)="getConsumerUnitByName()">Consultar por Data de Vencimento</button>
-      <button (click)="getConsumerUnitByNumber()">Consultar por Valor</button>
-      <button (click)="getConsumerUnitByDist()">Consultar por Unidade Consumidora</button>
-      <button (click)="getConsumerUnitList()">Cancelar</button>
+      <button (click)="getInvoiceById()">Consultar por ID</button>
+      <button (click)="getInvoiceByUcId()">Consultar por Unidade Consumidora </button>
+      <button (click)="getInvoiceByValue()">Consultar por Valor</button>
+      <button (click)="getInvoiceByDate()">Consultar por Data de Vencimento</button>
+      <button (click)="getInvoicesList()">Cancelar</button>
     </div>
   </div>
   <ng-template #searchOff></ng-template>
@@ -107,8 +107,8 @@
 
     </div>
     <div class="wrapper__container--del__wrapper--buttons">
-      <button (click)="delConsumerUnit()">Deletar</button>
-      <button (click)="getConsumerUnitList()">Cancelar</button>
+      <button (click)="delInvoice()">Deletar</button>
+      <button (click)="getInvoicesList()">Cancelar</button>
     </div>
   </div>
   <ng-template #delOff></ng-template>
